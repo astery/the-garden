@@ -5,9 +5,9 @@
  *      Author: Astery
  */
 
-#include <stdio.h>
-#include <SDL2/SDL.h>
 #include "game.h"
+#include <stdio.h>
+#include <stdbool.h>
 
 
 int Game_Init(Game *game, int screen_width, int screen_height) {
@@ -34,6 +34,30 @@ int Game_Init(Game *game, int screen_width, int screen_height) {
 	}
 
 	return 0;
+}
+
+void Game_RunLoop(Game *game, GameController *controller) {
+	SDL_Event e;
+	bool quit = false;
+
+	while (!quit){
+		while (SDL_PollEvent(&e)){
+			if (e.type == SDL_QUIT){
+				quit = true;
+			}
+			if (e.type == SDL_KEYDOWN){
+				quit = true;
+			}
+			if (e.type == SDL_MOUSEBUTTONDOWN){
+				quit = true;
+			}
+			GameController_HanleInput(controller, e);
+		}
+
+		SDL_RenderClear(game->render);
+		GameController_RenderScene(controller, game->render);
+		SDL_RenderPresent(game->render);
+	}
 }
 
 void Game_Destroy(Game *game) {
