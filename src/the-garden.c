@@ -12,25 +12,67 @@
 #include <stdlib.h>
 #include <SDL2/SDL.h>
 
-int main(int argc, char* argv[]) {
-    // Start SDL2
-    SDL_Init(SDL_INIT_EVERYTHING);
+#define WIDTH 640
+#define HEIGHT 480
+#define IMG_PATH ".\\assets\\"
+#define IMG_LENA IMG_PATH "lena512.bmp"
 
-    // Create a Window in the middle of the screen
-    SDL_Window *window = 0;
+int main(int argc, char* argv[])
+{
+	if (SDL_Init(SDL_INIT_VIDEO) != 0){
+		printf("Error");
+		return 1;
+	}
 
-    window = SDL_CreateWindow("Hello World!",
-                              SDL_WINDOWPOS_CENTERED,
-                              SDL_WINDOWPOS_CENTERED,
-                              640, 480,
-                              SDL_WINDOW_SHOWN);
+	SDL_Window *win = SDL_CreateWindow("Hello World!", 100, 100, WIDTH, HEIGHT, SDL_WINDOW_SHOWN);
+	if (win == NULL){
+		printf("SDL_CreateWindow Error: %s", SDL_GetError());
+		SDL_Quit();
+		return 1;
+	}
 
-    // Delay so that we can see the window appear
-    SDL_Delay(2000);
+	SDL_Renderer *ren = SDL_CreateRenderer(win, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+	if (ren == NULL){
+		SDL_DestroyWindow(win);
+		printf("SDL_CreateRenderer Error: %s", SDL_GetError());
+		SDL_Quit();
+		return 1;
+	}
 
-    // Cleanup and Quit
-    SDL_DestroyWindow(window);
-    SDL_Quit();
+	char imagePath[] = IMG_LENA;
+	SDL_Surface *bmp = SDL_LoadBMP(imagePath);
+	if (bmp == NULL){
+		SDL_DestroyRenderer(ren);
+		SDL_DestroyWindow(win);
+		printf("SDL_LoadBMP Error: %s", SDL_GetError());
+		SDL_Quit();
+		return 1;
+	}
 
-    return 0;
+	SDL_Texture *tex = SDL_CreateTextureFromSurface(ren, bmp);
+	SDL_FreeSurface(bmp);
+	if (tex == NULL){
+		SDL_DestroyRenderer(ren);
+		SDL_DestroyWindow(win);
+		printf("SDL_CreateTextureFromSurface Error: %s", SDL_GetError());
+		SDL_Quit();
+		return 1;
+	}
+
+	SDL_Rect destR;
+	destR.w = WIDTH / 4;
+	destR.h = HEIGHT / 4;
+
+	int i;
+	for (i = 0; i < 3; ++i){
+		SDL_RenderClear(ren);
+		destR.x = 0;
+		destR.y = 0;
+
+		SDL_RenderCopy(ren, tex, NULL, &destR);
+		SDL_RenderPresent(ren);
+		SDL_Delay(1000);
+	}
+
+	return 0;
 }
