@@ -36,7 +36,7 @@ int Application_Init(Application *app, int screen_width, int screen_height) {
 	return 0;
 }
 
-void Application_RunLoop(Application *app, GameController *controller) {
+void Application_RunLoop(Application *app, Scene *controller) {
 	SDL_Event e;
 	bool quit = false;
 
@@ -51,11 +51,11 @@ void Application_RunLoop(Application *app, GameController *controller) {
 			if (e.type == SDL_MOUSEBUTTONDOWN){
 				quit = true;
 			}
-			GameController_HanleInput(controller, e);
+			Scene_HandleInput(controller, e);
 		}
 
 		SDL_RenderClear(app->render);
-		GameController_RenderScene(controller, app->render);
+		Scene_RenderScene(controller, app->render);
 		SDL_RenderPresent(app->render);
 	}
 }

@@ -9,7 +9,8 @@
 #define APPLICATION_H_
 
 #include <SDL2/SDL.h>
-#include "game_controller.h"
+
+#include "scene.h"
 
 typedef struct {
 	SDL_Window *window;
@@ -19,7 +20,7 @@ typedef struct {
 } Application;
 
 int Application_Init(Application *app, int screen_width, int screen_height);
-void Application_RunLoop(Application *app, GameController *controller);
+void Application_RunLoop(Application *app, Scene *controller);
 void Application_Destroy(Application *app);
 
 #endif /* APPLICATION_H_ */

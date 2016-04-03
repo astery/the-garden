@@ -23,8 +23,8 @@ int main(int argc, char* argv[])
 	}
 
 
-	GameController controller;
-	if (GameController_Init(&controller, app.render) != 0) {
+	Scene controller;
+	if (Scene_Init(&controller, app.render) != 0) {
 		Application_Destroy(&app);
 		return 1;
 	}
