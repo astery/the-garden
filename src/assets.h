@@ -1,14 +1,20 @@
 /*
  * assets.h
  *
- *  Created on: 3 апр. 2016 г.
+ *  Created on: 3 пїЅпїЅпїЅ. 2016 пїЅ.
  *      Author: Astery
  */
 
 #ifndef ASSETS_H_
 #define ASSETS_H_
 
-#define IMG_PATH ".\\assets\\"
+#ifdef _WIN32
+#define SEP "\\"
+#else
+#define SEP "/"
+#endif
+
+#define IMG_PATH "." SEP "assets" SEP
 #define IMG_MENU IMG_PATH "menu.bmp"
 #define IMG_GAME_OVER IMG_PATH "game_over.bmp"
 #define IMG_FIGHT IMG_PATH "fight.bmp"
