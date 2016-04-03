@@ -1,7 +1,7 @@
 /*
  * app.c
  *
- *  Created on: 2 апр. 2016 г.
+ *  Created on: 2 пїЅпїЅпїЅ. 2016 пїЅ.
  *      Author: Astery
  */
 
@@ -36,7 +36,9 @@ int Application_Init(Application *app, int screen_width, int screen_height) {
 	return 0;
 }
 
-void Application_RunLoop(Application *app, Scene *controller) {
+void Application_RunLoop(Application *app, Scene *initial_scene) {
+	Application_SetScene(app, initial_scene);
+
 	SDL_Event e;
 	bool quit = false;
 
@@ -51,11 +53,17 @@ void Application_RunLoop(Application *app, Scene *controller) {
 			if (e.type == SDL_MOUSEBUTTONDOWN){
 				quit = true;
 			}
-			Scene_HandleInput(controller, e);
+			app->current_scene->input_handler(
+					app->current_scene,
+					e
+			);
 		}
 
 		SDL_RenderClear(app->render);
-		Scene_RenderScene(controller, app->render);
+		app->current_scene->render(
+				app->current_scene,
+				app->render
+		);
 		SDL_RenderPresent(app->render);
 	}
 }
@@ -66,4 +74,8 @@ void Application_Destroy(Application *app) {
 	SDL_DestroyWindow(app->window);
 	app->window = NULL;
 	SDL_Quit();
+}
+
+void Application_SetScene(Application *app, Scene *scene) {
+	app->current_scene = scene;
 }

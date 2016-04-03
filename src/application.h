@@ -1,7 +1,7 @@
 /*
  * app.h
  *
- *  Created on: 2 апр. 2016 г.
+ *  Created on: 2 пїЅпїЅпїЅ. 2016 пїЅ.
  *      Author: Astery
  */
 
@@ -17,10 +17,12 @@ typedef struct {
 	SDL_Renderer *render;
 	int screen_width;
 	int screen_height;
+	Scene *current_scene;
 } Application;
 
 int Application_Init(Application *app, int screen_width, int screen_height);
-void Application_RunLoop(Application *app, Scene *controller);
+void Application_RunLoop(Application *app, Scene *initial_scene);
 void Application_Destroy(Application *app);
+void Application_SetScene(Application *app, Scene *scene);
 
 #endif /* APPLICATION_H_ */

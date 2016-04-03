@@ -14,6 +14,7 @@
 
 #include "application.h"
 #include "image.h"
+#include "scenes/menu.h"
 
 int main(int argc, char* argv[])
 {
@@ -22,14 +23,13 @@ int main(int argc, char* argv[])
 		return 1;
 	}
 
-
-	Scene controller;
-	if (Scene_Init(&controller, app.render) != 0) {
+	MenuScene menu_scene;
+	if (MenuScene_Init(&menu_scene, app.render) != 0) {
 		Application_Destroy(&app);
 		return 1;
 	}
 
-	Application_RunLoop(&app, &controller);
+	Application_RunLoop(&app, (Scene *) &menu_scene);
 	Application_Destroy(&app);
 	return 0;
 }
