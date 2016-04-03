@@ -19,5 +19,6 @@
 #define IMG_GAME_OVER IMG_PATH "game_over.bmp"
 #define IMG_FIGHT IMG_PATH "fight.bmp"
 #define IMG_WALK IMG_PATH "walk.bmp"
+#define IMG_MAP IMG_PATH "walk.bmp"
 
 #endif /* ASSETS_H_ */
