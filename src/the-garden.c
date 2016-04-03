@@ -11,24 +11,25 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <SDL2/SDL.h>
-#include "game.h"
+
+#include "application.h"
 #include "image.h"
 
 int main(int argc, char* argv[])
 {
-	Game game;
-	if (Game_Init(&game, 640, 480) != 0) {
+	Application app;
+	if (Application_Init(&app, 640, 480) != 0) {
 		return 1;
 	}
 
 
 	GameController controller;
-	if (GameController_Init(&controller, game.render) != 0) {
-		Game_Destroy(&game);
+	if (GameController_Init(&controller, app.render) != 0) {
+		Application_Destroy(&app);
 		return 1;
 	}
 
-	Game_RunLoop(&game, &controller);
-	Game_Destroy(&game);
+	Application_RunLoop(&app, &controller);
+	Application_Destroy(&app);
 	return 0;
 }
