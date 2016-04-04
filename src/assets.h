@@ -20,6 +20,10 @@
 
 Image img_menu;
 Image img_map;
+Image img_tutor_up;
+Image img_tutor_down;
+Image img_tutor_right;
+Image img_tutor_left;
 
 int AssetsLoad(SDL_Renderer *render);
 

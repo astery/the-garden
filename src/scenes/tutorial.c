@@ -53,16 +53,16 @@ void TutorialScene_HandleInput(void *scene, SceneManager *manager, SDL_Event *e)
 void TutorialScene_RenderScene(void *scene, SDL_Renderer *render) {
 	switch(((TutorialScene *) scene)->action) {
 	case UP:
-		SDL_RenderCopy(render, img_menu.texture, NULL, NULL);
+		SDL_RenderCopy(render, img_tutor_up.texture, NULL, NULL);
 		break;
 	case DOWN:
-		SDL_RenderCopy(render, img_menu.texture, NULL, NULL);
+		SDL_RenderCopy(render, img_tutor_down.texture, NULL, NULL);
 		break;
 	case LEFT:
-		SDL_RenderCopy(render, img_menu.texture, NULL, NULL);
+		SDL_RenderCopy(render, img_tutor_left.texture, NULL, NULL);
 		break;
 	case RIGHT:
-		SDL_RenderCopy(render, img_menu.texture, NULL, NULL);
+		SDL_RenderCopy(render, img_tutor_right.texture, NULL, NULL);
 		break;
 	}
 }
