@@ -8,25 +8,30 @@
 #include "menu.h"
 #include <SDL2/SDL.h>
 #include "../assets.h"
+#include "map.h"
 
-int MenuScene_Init(MenuScene *scene, SDL_Renderer *render) {
-	Scene_Init((Scene *) scene, MenuScene_HandleInput, MenuScene_RenderScene);
-	int ret = Image_Init(&scene->background, IMG_MENU, render);
+void MenuScene_Init(MenuScene *scene) {
+	Scene_Init((Scene *) scene, MenuScene_HandleInput, MenuScene_RenderScene, MenuScene_Destructor);
+}
 
-	return ret;
+void MenuScene_Destructor(void *scene) {
+	free((MenuScene *) scene);
 }
 
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wswitch"
 
 void MenuScene_HandleInput(void *scene, SceneManager *manager, SDL_Event *e) {
-	if (e->type == SDL_KEYDOWN){
+	if (e->type == SDL_KEYDOWN) {
 		switch(e->key.keysym.scancode) {
 		case SDL_SCANCODE_SPACE:
 			printf("space@!");
 			break;
 		case SDL_SCANCODE_RETURN:
-			printf("return#!");
+			;
+			MapScene *map_scene = (MapScene *) malloc(sizeof *map_scene);
+			MapScene_Init(map_scene);
+			SceneManager_SetCurrentScene(manager, (Scene *) map_scene);
 			break;
 		}
 	}
@@ -35,6 +40,5 @@ void MenuScene_HandleInput(void *scene, SceneManager *manager, SDL_Event *e) {
 #pragma GCC diagnostic pop
 
 void MenuScene_RenderScene(void *scene, SDL_Renderer *render) {
-	MenuScene *menu = scene;
-	SDL_RenderCopy(render, menu->background.texture, NULL, NULL);
+	SDL_RenderCopy(render, img_menu.texture, NULL, NULL);
 }

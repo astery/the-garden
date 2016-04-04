@@ -14,10 +14,10 @@
 
 typedef struct {
 	Scene scene;
-	Image background;
 } MenuScene;
 
-int MenuScene_Init(MenuScene *scene, SDL_Renderer *render);
+void MenuScene_Init(MenuScene *scene);
+void MenuScene_Destructor(void *scene);
 void MenuScene_HandleInput(void *scene, SceneManager *manager, SDL_Event *e);
 void MenuScene_RenderScene(void *scene, SDL_Renderer *render);
 

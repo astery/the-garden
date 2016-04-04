@@ -15,12 +15,14 @@
 
 typedef void (*SceneInputHandler)(void *scene, SceneManager *manager, SDL_Event *e);
 typedef void (*SceneRender)(void *scene, SDL_Renderer *render);
+typedef void (*SceneDestructor)(void *scene);
 
 struct Scene {
 	SceneInputHandler input_handler;
 	SceneRender render;
+	SceneDestructor destructor;
 };
 
-void Scene_Init(Scene *scene, SceneInputHandler input_handler, SceneRender render);
+void Scene_Init(Scene *scene, SceneInputHandler input_handler, SceneRender render, SceneDestructor destructor);
 
 #endif /* SCENE_H_ */

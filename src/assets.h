@@ -8,6 +8,8 @@
 #ifndef ASSETS_H_
 #define ASSETS_H_
 
+#include "image.h"
+
 #ifdef _WIN32
 #define SEP "\\"
 #else
@@ -15,10 +17,10 @@
 #endif
 
 #define IMG_PATH "." SEP "assets" SEP
-#define IMG_MENU IMG_PATH "menu.bmp"
-#define IMG_GAME_OVER IMG_PATH "game_over.bmp"
-#define IMG_FIGHT IMG_PATH "fight.bmp"
-#define IMG_WALK IMG_PATH "walk.bmp"
-#define IMG_MAP IMG_PATH "walk.bmp"
+
+Image img_menu;
+Image img_map;
+
+int AssetsLoad(SDL_Renderer *render);
 
 #endif /* ASSETS_H_ */

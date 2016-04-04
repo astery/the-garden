@@ -13,6 +13,7 @@
 #include <SDL2/SDL.h>
 
 #include "application.h"
+#include "assets.h"
 #include "scenes/manager.h"
 #include "scenes/menu.h"
 
@@ -23,16 +24,16 @@ int main(int argc, char* argv[])
 		return 1;
 	}
 
-	SceneManager scene_manager;
-	SceneManager_Init(&scene_manager);
-
-	MenuScene menu_scene;
-	if (MenuScene_Init(&menu_scene, app.render) != 0) {
+	if (AssetsLoad(app.render) != 0) {
 		Application_Destroy(&app);
 		return 1;
 	}
 
-	SceneManager_SetCurrentScene(&scene_manager, (Scene *) &menu_scene);
+	MenuScene *menu_scene = malloc(sizeof *menu_scene);
+	MenuScene_Init(menu_scene);
+
+	SceneManager scene_manager;
+	SceneManager_Init(&scene_manager, (Scene *) menu_scene);
 
 	Application_RunLoop(&app, &scene_manager);
 	Application_Destroy(&app);

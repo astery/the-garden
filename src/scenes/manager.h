@@ -15,7 +15,7 @@ struct SceneManager {
 	Scene *current_scene;
 };
 
-void SceneManager_Init(SceneManager *manager);
+void SceneManager_Init(SceneManager *manager, Scene *init_scene);
 void SceneManager_SetCurrentScene(SceneManager *manager, Scene *scene);
 
 #endif /* SCENES_MANAGER_H_ */

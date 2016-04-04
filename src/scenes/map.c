@@ -9,11 +9,12 @@
 #include <SDL2/SDL.h>
 #include "../assets.h"
 
-int MapScene_Init(MapScene *scene, SDL_Renderer *render) {
-	Scene_Init((Scene *) scene, MapScene_HandleInput, MapScene_RenderScene);
-	int ret = Image_Init(&scene->background, IMG_MAP, render);
+void MapScene_Init(MapScene *scene) {
+	Scene_Init((Scene *) scene, MapScene_HandleInput, MapScene_RenderScene, MapScene_Destructor);
+}
 
-	return ret;
+void MapScene_Destructor(void *scene) {
+	free((MapScene *) scene);
 }
 
 void MapScene_HandleInput(void *scene, SceneManager *manager, SDL_Event *e) {
@@ -21,6 +22,5 @@ void MapScene_HandleInput(void *scene, SceneManager *manager, SDL_Event *e) {
 }
 
 void MapScene_RenderScene(void *scene, SDL_Renderer *render) {
-	MapScene *menu = scene;
-	SDL_RenderCopy(render, menu->background.texture, NULL, NULL);
+	SDL_RenderCopy(render, img_map.texture, NULL, NULL);
 }

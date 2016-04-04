@@ -9,7 +9,8 @@
 
 #include "assets.h"
 
-void Scene_Init(Scene *scene, SceneInputHandler input_handler, SceneRender render) {
+void Scene_Init(Scene *scene, SceneInputHandler input_handler, SceneRender render, SceneDestructor destructor) {
 	scene->input_handler = input_handler;
 	scene->render = render;
+	scene->destructor = destructor;
 }
