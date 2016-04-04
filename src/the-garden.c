@@ -13,7 +13,7 @@
 #include <SDL2/SDL.h>
 
 #include "application.h"
-#include "image.h"
+#include "scenes/manager.h"
 #include "scenes/menu.h"
 
 int main(int argc, char* argv[])
@@ -23,13 +23,18 @@ int main(int argc, char* argv[])
 		return 1;
 	}
 
+	SceneManager scene_manager;
+	SceneManager_Init(&scene_manager);
+
 	MenuScene menu_scene;
 	if (MenuScene_Init(&menu_scene, app.render) != 0) {
 		Application_Destroy(&app);
 		return 1;
 	}
 
-	Application_RunLoop(&app, (Scene *) &menu_scene);
+	SceneManager_SetCurrentScene(&scene_manager, (Scene *) &menu_scene);
+
+	Application_RunLoop(&app, &scene_manager);
 	Application_Destroy(&app);
 	return 0;
 }

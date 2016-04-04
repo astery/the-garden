@@ -16,9 +16,23 @@ int MenuScene_Init(MenuScene *scene, SDL_Renderer *render) {
 	return ret;
 }
 
-void MenuScene_HandleInput(void *scene, SDL_Event e) {
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wswitch"
 
+void MenuScene_HandleInput(void *scene, SceneManager *manager, SDL_Event *e) {
+	if (e->type == SDL_KEYDOWN){
+		switch(e->key.keysym.scancode) {
+		case SDL_SCANCODE_SPACE:
+			printf("space@!");
+			break;
+		case SDL_SCANCODE_RETURN:
+			printf("return#!");
+			break;
+		}
+	}
 }
+
+#pragma GCC diagnostic pop
 
 void MenuScene_RenderScene(void *scene, SDL_Renderer *render) {
 	MenuScene *menu = scene;

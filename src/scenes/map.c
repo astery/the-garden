@@ -16,7 +16,7 @@ int MapScene_Init(MapScene *scene, SDL_Renderer *render) {
 	return ret;
 }
 
-void MapScene_HandleInput(void *scene, SDL_Event e) {
+void MapScene_HandleInput(void *scene, SceneManager *manager, SDL_Event *e) {
 
 }
 

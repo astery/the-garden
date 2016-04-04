@@ -10,6 +10,7 @@
 
 #include "../scene.h"
 #include "../image.h"
+#include "manager.h"
 
 typedef struct {
 	Scene scene;
@@ -17,7 +18,7 @@ typedef struct {
 } MenuScene;
 
 int MenuScene_Init(MenuScene *scene, SDL_Renderer *render);
-void MenuScene_HandleInput(void *scene, SDL_Event e);
+void MenuScene_HandleInput(void *scene, SceneManager *manager, SDL_Event *e);
 void MenuScene_RenderScene(void *scene, SDL_Renderer *render);
 
 #endif /* SCENES_MENU_H_ */
