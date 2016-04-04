@@ -8,7 +8,7 @@
 #include "menu.h"
 #include <SDL2/SDL.h>
 #include "../assets.h"
-#include "map.h"
+#include "tutorial.h"
 
 void MenuScene_Init(MenuScene *scene) {
 	Scene_Init((Scene *) scene, MenuScene_HandleInput, MenuScene_RenderScene, MenuScene_Destructor);
@@ -25,13 +25,11 @@ void MenuScene_HandleInput(void *scene, SceneManager *manager, SDL_Event *e) {
 	if (e->type == SDL_KEYDOWN) {
 		switch(e->key.keysym.scancode) {
 		case SDL_SCANCODE_SPACE:
-			printf("space@!");
-			break;
 		case SDL_SCANCODE_RETURN:
 			;
-			MapScene *map_scene = (MapScene *) malloc(sizeof *map_scene);
-			MapScene_Init(map_scene);
-			SceneManager_SetCurrentScene(manager, (Scene *) map_scene);
+			TutorialScene *tutorial_scene = (TutorialScene *) malloc(sizeof *tutorial_scene);
+			TutorialScene_Init(tutorial_scene);
+			SceneManager_SetCurrentScene(manager, (Scene *) tutorial_scene);
 			break;
 		}
 	}
