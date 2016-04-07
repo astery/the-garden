@@ -10,9 +10,11 @@
 
 #include "../scene.h"
 #include "../image.h"
+#include "../map.h"
 
 typedef struct {
 	Scene scene;
+	Map *map;
 } MapScene;
 
 void MapScene_Init(MapScene *scene);
