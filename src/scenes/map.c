@@ -11,10 +11,14 @@
 
 void MapScene_Init(MapScene *scene) {
 	Scene_Init((Scene *) scene, MapScene_HandleInput, MapScene_RenderScene, MapScene_Destructor);
+	scene->map = (Map*) malloc(sizeof *scene->map);
+	Map_Generate(scene->map);
 }
 
 void MapScene_Destructor(void *scene) {
-	free((MapScene *) scene);
+	MapScene *map_scene = (MapScene *) scene;
+	free(map_scene->map);
+	free(map_scene);
 }
 
 void MapScene_HandleInput(void *scene, SceneManager *manager, SDL_Event *e) {
@@ -22,5 +26,6 @@ void MapScene_HandleInput(void *scene, SceneManager *manager, SDL_Event *e) {
 }
 
 void MapScene_RenderScene(void *scene, SDL_Renderer *render) {
-	SDL_RenderCopy(render, img_map.texture, NULL, NULL);
+	MapScene *map_scene = (MapScene *) scene;
+	Map_Render(map_scene->map, render);
 }
