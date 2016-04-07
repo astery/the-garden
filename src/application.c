@@ -10,7 +10,13 @@
 #include "application.h"
 
 
-int Application_Init(Application *app, int screen_width, int screen_height) {
+int Application_Init(
+		Application *app,
+		int screen_width,
+		int screen_height,
+		int logical_width,
+		int logical_height
+		) {
 	if (SDL_Init(SDL_INIT_VIDEO) != 0){
 		printf("Unable to initialize SDL");
 		return 1;
@@ -32,6 +38,7 @@ int Application_Init(Application *app, int screen_width, int screen_height) {
 		SDL_Quit();
 		return 1;
 	}
+	SDL_RenderSetLogicalSize(app->render, 7, 7);
 
 	return 0;
 }
@@ -52,6 +59,7 @@ void Application_RunLoop(Application *app, SceneManager *manager) {
 			);
 		}
 
+		SDL_SetRenderDrawColor(app->render, 0x80, 0x80, 0x80, 0xFF);
 		SDL_RenderClear(app->render);
 		manager->current_scene->render(
 				manager->current_scene,

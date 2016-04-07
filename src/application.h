@@ -19,7 +19,7 @@ typedef struct {
 	int screen_height;
 } Application;
 
-int Application_Init(Application *app, int screen_width, int screen_height);
+int Application_Init(Application *app, int screen_width, int screen_height, int logical_width, int logical_height);
 void Application_RunLoop(Application *app, SceneManager *scene_manager);
 void Application_Destroy(Application *app);
 
