@@ -9,6 +9,7 @@
 #define ASSETS_H_
 
 #include "image.h"
+#include "map.h"
 
 #ifdef _WIN32
 #define SEP "\\"
@@ -26,5 +27,6 @@ Image img_tutor_right;
 Image img_tutor_left;
 
 int AssetsLoad(SDL_Renderer *render);
+void LoadMap1(Map *map);
 
 #endif /* ASSETS_H_ */

@@ -29,6 +29,23 @@ void Map_Generate(Map *map) {
 	}
 }
 
+void Map_GenerateFromItemTypeArray(Map *map, MapItemType m[MAP_SIZE][MAP_SIZE]) {
+	int i, j;
+	MapItem *item;
+
+	map->items_count = 0;
+
+	for (i=0; i < MAP_SIZE; i++) {
+		for (j=0; j < MAP_SIZE; j++) {
+			item = &map->items[map->items_count];
+			item->type=m[i][j];
+			item->x = i;
+			item->y = j;
+			map->items_count++;
+		}
+	}
+}
+
 void Map_Render(Map *map, SDL_Renderer *render) {
 	SDL_SetRenderDrawColor(render, 0xf, 0xf, 0xf, 0xf);
 	SDL_RenderClear(render);

@@ -21,3 +21,22 @@ int AssetsLoad(SDL_Renderer *render) {
 
 	return ret;
 }
+
+#define N NONE
+#define W WALL
+#define P PLAYER
+#define M MONSTER
+#define E EXIT
+
+void LoadMap1(Map *map) {
+	MapItemType m[MAP_SIZE][MAP_SIZE] = {
+			{ N, N, N, N, N, N, N },
+			{ N, W, W, W, W, W, N },
+			{ N, W, N, N, N, W, N },
+			{ N, W, N, W, N, W, N },
+			{ N, W, P, W, E, W, N },
+			{ N, W, W, W, W, W, N },
+			{ N, N, N, N, N, N, N },
+	};
+	Map_GenerateFromItemTypeArray(map, m);
+}

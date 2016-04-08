@@ -18,7 +18,7 @@ typedef struct {
 
 void MenuScene_Init(MenuScene *scene);
 void MenuScene_Destructor(void *scene);
-void MenuScene_HandleInput(void *scene, SceneManager *manager, SDL_Event *e);
-void MenuScene_RenderScene(void *scene, SDL_Renderer *render);
+void MenuScene_HandleInput(void *scene, Game *game, SceneManager *manager, SDL_Event *e);
+void MenuScene_RenderScene(void *scene, Game *game, SDL_Renderer *render);
 
 #endif /* SCENES_MENU_H_ */

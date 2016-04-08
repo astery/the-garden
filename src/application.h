@@ -11,6 +11,7 @@
 #include <SDL2/SDL.h>
 
 #include "scenes/manager.h"
+#include "game.h"
 
 typedef struct {
 	SDL_Window *window;
@@ -20,7 +21,7 @@ typedef struct {
 } Application;
 
 int Application_Init(Application *app, int screen_width, int screen_height, int logical_width, int logical_height);
-void Application_RunLoop(Application *app, SceneManager *scene_manager);
+void Application_RunLoop(Application *app, SceneManager *scene_manager, Game *game);
 void Application_Destroy(Application *app);
 
 #endif /* APPLICATION_H_ */

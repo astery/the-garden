@@ -16,6 +16,7 @@
 #include "assets.h"
 #include "scenes/manager.h"
 #include "scenes/menu.h"
+#include "game.h"
 
 int main(int argc, char* argv[])
 {
@@ -29,13 +30,16 @@ int main(int argc, char* argv[])
 		return 1;
 	}
 
+	Game game;
+	Game_Init(&game);
+
 	MenuScene *menu_scene = malloc(sizeof *menu_scene);
 	MenuScene_Init(menu_scene);
 
 	SceneManager scene_manager;
 	SceneManager_Init(&scene_manager, (Scene *) menu_scene);
 
-	Application_RunLoop(&app, &scene_manager);
+	Application_RunLoop(&app, &scene_manager, &game);
 	Application_Destroy(&app);
 	return 0;
 }

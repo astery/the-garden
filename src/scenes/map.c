@@ -21,11 +21,11 @@ void MapScene_Destructor(void *scene) {
 	free(map_scene);
 }
 
-void MapScene_HandleInput(void *scene, SceneManager *manager, SDL_Event *e) {
+void MapScene_HandleInput(void *scene, Game *game, SceneManager *manager, SDL_Event *e) {
 
 }
 
-void MapScene_RenderScene(void *scene, SDL_Renderer *render) {
+void MapScene_RenderScene(void *scene, Game *game, SDL_Renderer *render) {
 	MapScene *map_scene = (MapScene *) scene;
 	Map_Render(map_scene->map, render);
 }

@@ -43,7 +43,7 @@ int Application_Init(
 	return 0;
 }
 
-void Application_RunLoop(Application *app, SceneManager *manager) {
+void Application_RunLoop(Application *app, SceneManager *manager, Game *game) {
 	SDL_Event e;
 	bool quit = false;
 
@@ -54,6 +54,7 @@ void Application_RunLoop(Application *app, SceneManager *manager) {
 			}
 			manager->current_scene->input_handler(
 					manager->current_scene,
+					game,
 					manager,
 					&e
 			);
@@ -63,6 +64,7 @@ void Application_RunLoop(Application *app, SceneManager *manager) {
 		SDL_RenderClear(app->render);
 		manager->current_scene->render(
 				manager->current_scene,
+				game,
 				app->render
 		);
 		SDL_RenderPresent(app->render);

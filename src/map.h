@@ -21,6 +21,8 @@ enum MapItemType {
 	MAP_ITEMS_SIZE
 };
 
+typedef enum MapItemType MapItemType;
+
 typedef struct {
 	int x;
 	int y;
@@ -33,6 +35,7 @@ typedef struct {
 } Map;
 
 void Map_Generate(Map *map);
+void Map_GenerateFromItemTypeArray(Map *map, MapItemType m[MAP_SIZE][MAP_SIZE]);
 void Map_Render(Map *map, SDL_Renderer *render);
 
 void MapItem_Render(MapItem *item, SDL_Renderer *render);

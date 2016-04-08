@@ -22,7 +22,7 @@ void TutorialScene_Destructor(void *scene) {
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wswitch"
 
-void TutorialScene_HandleInput(void *scene, SceneManager *manager, SDL_Event *e) {
+void TutorialScene_HandleInput(void *scene, Game *game, SceneManager *manager, SDL_Event *e) {
 	TutorialScene *tutor = (TutorialScene *) scene;
 	enum Action a = tutor->action;
 
@@ -50,7 +50,7 @@ void TutorialScene_HandleInput(void *scene, SceneManager *manager, SDL_Event *e)
 
 #pragma GCC diagnostic pop
 
-void TutorialScene_RenderScene(void *scene, SDL_Renderer *render) {
+void TutorialScene_RenderScene(void *scene, Game *game, SDL_Renderer *render) {
 	switch(((TutorialScene *) scene)->action) {
 	case UP:
 		SDL_RenderCopy(render, img_tutor_up.texture, NULL, NULL);

@@ -12,9 +12,10 @@
 
 #include "scene_typedefs.h"
 #include "scenes/manager.h"
+#include "game.h"
 
-typedef void (*SceneInputHandler)(void *scene, SceneManager *manager, SDL_Event *e);
-typedef void (*SceneRender)(void *scene, SDL_Renderer *render);
+typedef void (*SceneInputHandler)(void *scene, Game *game, SceneManager *manager, SDL_Event *e);
+typedef void (*SceneRender)(void *scene, Game *game, SDL_Renderer *render);
 typedef void (*SceneDestructor)(void *scene);
 
 struct Scene {

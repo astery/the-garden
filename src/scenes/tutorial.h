@@ -23,7 +23,7 @@ typedef struct {
 
 void TutorialScene_Init(TutorialScene *scene);
 void TutorialScene_Destructor(void *scene);
-void TutorialScene_HandleInput(void *scene, SceneManager *manager, SDL_Event *e);
-void TutorialScene_RenderScene(void *scene, SDL_Renderer *render);
+void TutorialScene_HandleInput(void *scene, Game *game, SceneManager *manager, SDL_Event *e);
+void TutorialScene_RenderScene(void *scene, Game *game, SDL_Renderer *render);
 
 #endif /* SCENES_TUTORIAL_H_ */

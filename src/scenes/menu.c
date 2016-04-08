@@ -21,7 +21,7 @@ void MenuScene_Destructor(void *scene) {
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wswitch"
 
-void MenuScene_HandleInput(void *scene, SceneManager *manager, SDL_Event *e) {
+void MenuScene_HandleInput(void *scene, Game *game, SceneManager *manager, SDL_Event *e) {
 	if (e->type == SDL_KEYDOWN) {
 		switch(e->key.keysym.scancode) {
 		case SDL_SCANCODE_SPACE:
@@ -37,6 +37,6 @@ void MenuScene_HandleInput(void *scene, SceneManager *manager, SDL_Event *e) {
 
 #pragma GCC diagnostic pop
 
-void MenuScene_RenderScene(void *scene, SDL_Renderer *render) {
+void MenuScene_RenderScene(void *scene, Game *game, SDL_Renderer *render) {
 	SDL_RenderCopy(render, img_menu.texture, NULL, NULL);
 }
