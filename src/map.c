@@ -60,19 +60,19 @@ void MapItem_Render(MapItem *item, SDL_Renderer *render) {
 	SDL_Color *c;
 	switch (item->type) {
 	case WALL:
-		c = &color_green;
+		c = &color_dark_green;
 		break;
 	case PLAYER:
 		c = &color_blue;
 		break;
 	case MONSTER:
-		c = &color_red;
+		c = &color_magenta;
 		break;
 	case EXIT:
-		c = &color_orange;
+		c = &color_red;
 		break;
 	default:
-		c = &color_gray;
+		c = &color_light_green;
 	}
 	SDL_SetRenderDrawColor(render, c->r, c->g, c->b, 0xFF);
 	SDL_RenderDrawPoint(render, item->x, item->y);
