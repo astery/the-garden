@@ -12,12 +12,11 @@
 
 int AssetsLoad(SDL_Renderer *render) {
 	int ret;
-	IMG_INIT(&img_menu, "anim" SEP "screens0000.png");
-	IMG_INIT(&img_map, "anim" SEP "screens0014.png");
-	IMG_INIT(&img_tutor_up, "anim" SEP "screens0002.png");
-	IMG_INIT(&img_tutor_down, "anim" SEP "screens0003.png");
-	IMG_INIT(&img_tutor_right, "anim" SEP "screens0004.png");
-	IMG_INIT(&img_tutor_left, "anim" SEP "screens0005.png");
+	IMG_INIT(&img_menu, "title.png");
+	IMG_INIT(&img_tutor_up, "arrow_up_1.png");
+	IMG_INIT(&img_tutor_down, "arrow_down_1.png");
+	IMG_INIT(&img_tutor_right, "arrow_right_1.png");
+	IMG_INIT(&img_tutor_left, "arrow_left_1.png");
 
 	return ret;
 }

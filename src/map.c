@@ -21,8 +21,8 @@ void Map_Generate(Map *map) {
 		for (j = 0; j < MAP_SIZE; j++) {
 			item = &map->items[map->items_count];
 			item->type = rand() % MAP_ITEMS_SIZE;
-			item->x = i;
-			item->y = j;
+			item->pos.x = i;
+			item->pos.y = j;
 
 			map->items_count++;
 		}
@@ -39,8 +39,8 @@ void Map_GenerateFromItemTypeArray(Map *map, MapItemType m[MAP_SIZE][MAP_SIZE]) 
 		for (j=0; j < MAP_SIZE; j++) {
 			item = &map->items[map->items_count];
 			item->type=m[i][j];
-			item->x = j;
-			item->y = i;
+			item->pos.x = j;
+			item->pos.y = i;
 			map->items_count++;
 		}
 	}
@@ -54,6 +54,18 @@ void Map_Render(Map *map, SDL_Renderer *render) {
 		MapItem_Render(&map->items[i], render);
 	}
 	return;
+}
+
+MapItem* Map_GetItemAtPos(Map *map, int x, int y) {
+	MapItem *item;
+	int i;
+	for (i=0; i < map->items_count; i++) {
+		item = &map->items[i];
+		if (item->pos.x == x && item->pos.y == y) {
+			return item;
+		}
+	}
+	return NULL;
 }
 
 void MapItem_Render(MapItem *item, SDL_Renderer *render) {
@@ -75,5 +87,9 @@ void MapItem_Render(MapItem *item, SDL_Renderer *render) {
 		c = &color_light_green;
 	}
 	SDL_SetRenderDrawColor(render, c->r, c->g, c->b, 0xFF);
-	SDL_RenderDrawPoint(render, item->x, item->y);
+	SDL_RenderDrawPoint(render, item->pos.x, item->pos.y);
+}
+
+bool Position_IsInMapBoundaries(Position *pos, Map *map) {
+	return pos->x <= MAP_SIZE && pos->y <= MAP_SIZE;
 }
