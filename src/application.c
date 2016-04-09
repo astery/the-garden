@@ -31,19 +31,19 @@ int Application_Init(
 	app->screen_height = screen_height;
 	app->screen_width = screen_width;
 
-	app->render = SDL_CreateRenderer(app->window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-	if (app->render == NULL){
+	app->renderer = SDL_CreateRenderer(app->window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+	if (app->renderer == NULL){
 		printf("SDL_CreateRenderer Error: %s", SDL_GetError());
 		SDL_DestroyWindow(app->window);
 		SDL_Quit();
 		return 1;
 	}
-	SDL_RenderSetLogicalSize(app->render, 7, 7);
+	SDL_RenderSetLogicalSize(app->renderer, 7, 7);
 
 	return 0;
 }
 
-void Application_RunLoop(Application *app, SceneManager *manager, Game *game) {
+void Application_RunLoop(Application *app, Game *game) {
 	SDL_Event e;
 	bool quit = false;
 
@@ -52,28 +52,19 @@ void Application_RunLoop(Application *app, SceneManager *manager, Game *game) {
 			if (e.type == SDL_QUIT){
 				quit = true;
 			}
-			manager->current_scene->input_handler(
-					manager->current_scene,
-					game,
-					manager,
-					&e
-			);
+			game->state->input_handler(game, &e);
 		}
 
-		SDL_SetRenderDrawColor(app->render, 0x80, 0x80, 0x80, 0xFF);
-		SDL_RenderClear(app->render);
-		manager->current_scene->render(
-				manager->current_scene,
-				game,
-				app->render
-		);
-		SDL_RenderPresent(app->render);
+		SDL_SetRenderDrawColor(app->renderer, 0x80, 0x80, 0x80, 0xFF);
+		SDL_RenderClear(app->renderer);
+		game->state->renderer(game, app->renderer);
+		SDL_RenderPresent(app->renderer);
 	}
 }
 
 void Application_Destroy(Application *app) {
-	SDL_DestroyRenderer(app->render);
-	app->render = NULL;
+	SDL_DestroyRenderer(app->renderer);
+	app->renderer = NULL;
 	SDL_DestroyWindow(app->window);
 	app->window = NULL;
 	SDL_Quit();

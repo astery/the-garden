@@ -14,9 +14,8 @@
 
 #include "application.h"
 #include "assets.h"
-#include "scenes/manager.h"
-#include "scenes/menu.h"
 #include "game.h"
+#include "game_states/menu.h"
 
 int main(int argc, char* argv[])
 {
@@ -25,7 +24,7 @@ int main(int argc, char* argv[])
 		return 1;
 	}
 
-	if (AssetsLoad(app.render) != 0) {
+	if (AssetsLoad(app.renderer) != 0) {
 		Application_Destroy(&app);
 		return 1;
 	}
@@ -33,13 +32,7 @@ int main(int argc, char* argv[])
 	Game game;
 	Game_Init(&game);
 
-	MenuScene *menu_scene = malloc(sizeof *menu_scene);
-	MenuScene_Init(menu_scene);
-
-	SceneManager scene_manager;
-	SceneManager_Init(&scene_manager, (Scene *) menu_scene);
-
-	Application_RunLoop(&app, &scene_manager, &game);
+	Application_RunLoop(&app, &game);
 	Application_Destroy(&app);
 	return 0;
 }

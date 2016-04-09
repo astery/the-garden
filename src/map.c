@@ -39,8 +39,8 @@ void Map_GenerateFromItemTypeArray(Map *map, MapItemType m[MAP_SIZE][MAP_SIZE]) 
 		for (j=0; j < MAP_SIZE; j++) {
 			item = &map->items[map->items_count];
 			item->type=m[i][j];
-			item->x = i;
-			item->y = j;
+			item->x = j;
+			item->y = i;
 			map->items_count++;
 		}
 	}
