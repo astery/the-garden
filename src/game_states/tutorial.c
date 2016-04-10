@@ -54,7 +54,7 @@ void TutorialGS_Render(Game *game, SDL_Renderer *render) {
 		SDL_RenderCopy(render, img_tutor_up.texture, NULL, NULL);
 		break;
 	case TGSA_DOWN:
-		SDL_RenderCopy(render, img_tutor_down.texture, NULL, NULL);
+		Animation_Render(&anim_arrow_down, render, 1, 1);
 		break;
 	case TGSA_LEFT:
 		SDL_RenderCopy(render, img_tutor_left.texture, NULL, NULL);

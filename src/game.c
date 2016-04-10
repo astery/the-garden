@@ -8,6 +8,7 @@
 #include "game.h"
 #include "assets.h"
 #include "game_states.h"
+#include "animation.h"
 
 void Game_Init(Game *game) {
 	game->state = NULL;
@@ -41,6 +42,7 @@ void Game_SetCurrentState(Game *game, GameStateName state_name) {
 	if (prev_state != NULL && prev_state->on_leave != NULL) {
 		prev_state->on_leave(game, prev_state);
 	}
+	Animation_ResetClock();
 }
 
 void Game_MovePawn(Game *game, Pawn *pawn, Orientation orient) {

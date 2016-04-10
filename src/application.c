@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include "application.h"
+#include "animation.h"
 
 
 int Application_Init(
@@ -18,7 +19,7 @@ int Application_Init(
 		int logical_height
 		) {
 	if (SDL_Init(SDL_INIT_VIDEO) != 0){
-		printf("Unable to initialize SDL");
+		printf("Unable to initialize SDL\n");
 		return 1;
 	}
 
@@ -33,7 +34,7 @@ int Application_Init(
 
 	app->renderer = SDL_CreateRenderer(app->window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 	if (app->renderer == NULL){
-		printf("SDL_CreateRenderer Error: %s", SDL_GetError());
+		printf("SDL_CreateRenderer Error: %s\n", SDL_GetError());
 		SDL_DestroyWindow(app->window);
 		SDL_Quit();
 		return 1;
