@@ -7,6 +7,9 @@
 
 #include "map.h"
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wswitch"
+
 void MapGS_HandleInput(Game *game, SDL_Event *e) {
 	Orientation o = -1;
 	if (e->type == SDL_KEYDOWN) {
@@ -30,6 +33,8 @@ void MapGS_HandleInput(Game *game, SDL_Event *e) {
 		Game_MovePlayer(game, o);
 	}
 }
+
+#pragma GCC diagnostic pop
 
 void MapGS_Render(Game *game, SDL_Renderer *render) {
 	Map_Render(game->current_map, render);

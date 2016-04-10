@@ -8,9 +8,6 @@
 #include "tutorial.h"
 #include "../assets.h"
 
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wswitch"
-
 void TutorialGS_OnEnter(Game *game, GameState *from_state) {
 	TutorialGSData *data = malloc(sizeof *data);
 	data->action = TGSA_DOWN;
@@ -20,6 +17,9 @@ void TutorialGS_OnEnter(Game *game, GameState *from_state) {
 void TutorialGS_OnLeave(Game *game, GameState *from_state) {
 	free(game->state->data);
 }
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wswitch"
 
 void TutorialGS_HandleInput(Game *game, SDL_Event *e) {
 	TutorialGSData *data = (TutorialGSData *) game->state->data;
