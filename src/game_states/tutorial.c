@@ -51,16 +51,16 @@ void TutorialGS_Render(Game *game, SDL_Renderer *render) {
 	TutorialGSData *data = (TutorialGSData *) game->state->data;
 	switch(data->action) {
 	case TGSA_UP:
-		SDL_RenderCopy(render, img_tutor_up.texture, NULL, NULL);
+		Animation_Render(&anim_arrow_up, render, 1, 0);
 		break;
 	case TGSA_DOWN:
-		Animation_Render(&anim_arrow_down, render, 1, 1);
+		Animation_Render(&anim_arrow_down, render, 1, 0);
 		break;
 	case TGSA_LEFT:
-		SDL_RenderCopy(render, img_tutor_left.texture, NULL, NULL);
+		Animation_Render(&anim_arrow_left, render, 0, 1);
 		break;
 	case TGSA_RIGHT:
-		SDL_RenderCopy(render, img_tutor_right.texture, NULL, NULL);
+		Animation_Render(&anim_arrow_right, render, 0, 1);
 		break;
 	}
 }

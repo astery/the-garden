@@ -24,12 +24,17 @@ Image img_menu;
 Image img_map;
 Image img_arrow_down_1;
 Image img_arrow_down_2;
-Image img_tutor_down;
-Image img_tutor_up;
-Image img_tutor_right;
-Image img_tutor_left;
+Image img_arrow_up_1;
+Image img_arrow_up_2;
+Image img_arrow_left_1;
+Image img_arrow_left_2;
+Image img_arrow_right_1;
+Image img_arrow_right_2;
 
 Animation anim_arrow_down;
+Animation anim_arrow_up;
+Animation anim_arrow_left;
+Animation anim_arrow_right;
 
 int AssetsLoad(SDL_Renderer *render);
 void LoadMap1(Map *map);

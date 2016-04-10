@@ -15,10 +15,12 @@ int AssetsLoad(SDL_Renderer *render) {
 	IMG_INIT(&img_menu, "title.png");
 	IMG_INIT(&img_arrow_down_1, "arrow_down_1.png");
 	IMG_INIT(&img_arrow_down_2, "arrow_down_2.png");
-	IMG_INIT(&img_tutor_up, "arrow_up_1.png");
-	IMG_INIT(&img_tutor_down, "arrow_down_1.png");
-	IMG_INIT(&img_tutor_right, "arrow_right_1.png");
-	IMG_INIT(&img_tutor_left, "arrow_left_1.png");
+	IMG_INIT(&img_arrow_up_1, "arrow_up_1.png");
+	IMG_INIT(&img_arrow_up_2, "arrow_up_2.png");
+	IMG_INIT(&img_arrow_left_1, "arrow_left_1.png");
+	IMG_INIT(&img_arrow_left_2, "arrow_left_2.png");
+	IMG_INIT(&img_arrow_right_1, "arrow_right_1.png");
+	IMG_INIT(&img_arrow_right_2, "arrow_right_2.png");
 
 	anim_arrow_down = (Animation) {
 		.steps_count = 2,
@@ -27,7 +29,37 @@ int AssetsLoad(SDL_Renderer *render) {
 			&img_arrow_down_2
 		},
 		.width = 5,
-		.height = 6
+		.height = 7
+	};
+
+	anim_arrow_up = (Animation) {
+		.steps_count = 2,
+		.steps = {
+			&img_arrow_up_1,
+			&img_arrow_up_2
+		},
+		.width = 5,
+		.height = 7
+	};
+
+	anim_arrow_left = (Animation) {
+		.steps_count = 2,
+		.steps = {
+			&img_arrow_left_1,
+			&img_arrow_left_2
+		},
+		.width = 7,
+		.height = 5
+	};
+
+	anim_arrow_right = (Animation) {
+		.steps_count = 2,
+		.steps = {
+			&img_arrow_right_1,
+			&img_arrow_right_2
+		},
+		.width = 7,
+		.height = 5
 	};
 
 	return ret;
