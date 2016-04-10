@@ -42,6 +42,7 @@ struct Game {
 };
 
 void Game_Init(Game *game);
+void Game_Reset(Game *game);
 void Game_SetCurrentMap(Game *game, int map_index);
 void Game_SetCurrentState(Game *game, GameStateName state_name);
 void Game_MovePawn(Game *game, Pawn *pawn, Orientation orient);

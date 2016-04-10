@@ -11,10 +11,17 @@
 #include "animation.h"
 
 void Game_Init(Game *game) {
+	Game_Reset(game);
+}
+
+void Game_Reset(Game *game) {
 	game->state = NULL;
 	LoadMaps(game->maps);
 	Game_SetCurrentMap(game, 0);
+	Game_SetCurrentState(game, GS_MENU);
+}
 
+void Game_UpdatePlayerReference(Game *game) {
 	MapItem *item;
 	int i;
 	for (i=0; i < game->current_map->items_count; i++) {
@@ -30,12 +37,12 @@ void Game_Init(Game *game) {
 
 	game->player.type = PT_PLAYER;
 	game->player.orient = PO_N;
-	Game_SetCurrentState(game, GS_MENU);
 }
 
 void Game_SetCurrentMap(Game *game, int map_index) {
 	game->current_map_index = map_index;
 	game->current_map = &game->maps[map_index];
+	Game_UpdatePlayerReference(game);
 }
 
 void Game_SetCurrentState(Game *game, GameStateName state_name) {
@@ -89,6 +96,8 @@ Position Pawn_PeekMove(Pawn *pawn, Orientation orient) {
 			break;
 		case PO_E:
 			p.x++;
+			break;
+		case PO_SIZE:
 			break;
 	}
 	return p;

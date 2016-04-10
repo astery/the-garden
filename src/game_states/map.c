@@ -30,7 +30,20 @@ void MapGS_HandleInput(Game *game, SDL_Event *e) {
 	}
 
 	if (o != -1) {
-		Game_MovePlayer(game, o);
+		Position pos = Pawn_PeekMove(&game->player, o);
+		MapItem *item = Map_GetFirstItemAtPos(game->current_map, pos.x, pos.y);
+		switch (item->type) {
+		case EXIT: ;
+			int next_map_index = game->current_map_index + 1;
+			if (next_map_index >= GAME_MAPS_COUNT - 1) {
+				Game_Reset(game);
+			} else {
+				Game_SetCurrentMap(game, next_map_index);
+			}
+			break;
+		default:
+			Game_MovePlayer(game, o);
+		}
 	}
 }
 
