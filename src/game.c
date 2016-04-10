@@ -52,7 +52,7 @@ void Game_MovePawn(Game *game, Pawn *pawn, Orientation orient) {
 		return;
 	}
 
-	MapItem *item = Map_GetItemAtPos(game->current_map, p.x, p.y);
+	MapItem *item = Map_GetFirstItemAtPos(game->current_map, p.x, p.y);
 	if (item == NULL) {
 		return;
 	}

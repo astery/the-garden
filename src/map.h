@@ -16,9 +16,9 @@
 enum MapItemType {
 	NONE = 0,
 	WALL,
-	PLAYER,
-	MONSTER,
 	EXIT,
+	MONSTER,
+	PLAYER,
 	MAP_ITEMS_SIZE
 };
 
@@ -35,14 +35,18 @@ typedef struct {
 } MapItem;
 
 typedef struct {
+	MapItemType slice[MAP_SIZE][MAP_SIZE];
+} MapSlice;
+
+typedef struct {
 	MapItem items[128];
 	int items_count;
 } Map;
 
-void Map_Generate(Map *map);
-void Map_GenerateFromItemTypeArray(Map *map, MapItemType m[MAP_SIZE][MAP_SIZE]);
+void Map_Init(Map *map);
+void Map_AppendFromItemTypeArray(Map *map, MapSlice slice);
 void Map_Render(Map *map, SDL_Renderer *render);
-MapItem* Map_GetItemAtPos(Map *map, int x, int y);
+MapItem* Map_GetFirstItemAtPos(Map *map, int x, int y);
 
 void MapItem_Render(MapItem *item, SDL_Renderer *render);
 

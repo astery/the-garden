@@ -10,9 +10,16 @@
 #include <SDL2/SDL_pixels.h>
 #include "colors.h"
 
+int MapItem_CompareByType(const void* a, const void* b) {
+	 MapItem ia = *((MapItem*) a);
+	 MapItem ib = *((MapItem*) b);
 
-void Map_Generate(Map *map) {
-	srand(1239);
+	 if (ia.type == ib.type) return 0;
+	 else if (ia.type < ib.type) return -1;
+	 else return 1;
+}
+
+void Map_Init(Map *map) {
 	map->items_count = 0;
 	MapItem *item;
 
@@ -20,7 +27,7 @@ void Map_Generate(Map *map) {
 	for (i = 0; i < MAP_SIZE; i++) {
 		for (j = 0; j < MAP_SIZE; j++) {
 			item = &map->items[map->items_count];
-			item->type = rand() % MAP_ITEMS_SIZE;
+			item->type = NONE;
 			item->pos.x = i;
 			item->pos.y = j;
 
@@ -29,21 +36,29 @@ void Map_Generate(Map *map) {
 	}
 }
 
-void Map_GenerateFromItemTypeArray(Map *map, MapItemType m[MAP_SIZE][MAP_SIZE]) {
+void Map_SortByType(Map *map) {
+	qsort(map->items, map->items_count, sizeof(MapItem), MapItem_CompareByType);
+}
+
+void Map_AppendFromItemTypeArray(Map *map, MapSlice slice) {
 	int i, j;
 	MapItem *item;
 
-	map->items_count = 0;
-
 	for (i=0; i < MAP_SIZE; i++) {
 		for (j=0; j < MAP_SIZE; j++) {
+			MapItemType type = slice.slice[i][j];
+			if (type == NONE) {
+				continue;
+			}
 			item = &map->items[map->items_count];
-			item->type=m[i][j];
+			item->type=type;
 			item->pos.x = j;
 			item->pos.y = i;
 			map->items_count++;
 		}
 	}
+
+	Map_SortByType(map);
 }
 
 void Map_Render(Map *map, SDL_Renderer *render) {
@@ -56,10 +71,10 @@ void Map_Render(Map *map, SDL_Renderer *render) {
 	return;
 }
 
-MapItem* Map_GetItemAtPos(Map *map, int x, int y) {
+MapItem* Map_GetFirstItemAtPos(Map *map, int x, int y) {
 	MapItem *item;
 	int i;
-	for (i=0; i < map->items_count; i++) {
+	for (i=map->items_count - 1; i >= 0; i--) {
 		item = &map->items[i];
 		if (item->pos.x == x && item->pos.y == y) {
 			return item;

@@ -72,7 +72,10 @@ int AssetsLoad(SDL_Renderer *render) {
 #define E EXIT
 
 void LoadMap1(Map *map) {
-	MapItemType m[MAP_SIZE][MAP_SIZE] = {
+	Map_Init(map);
+	MapSlice m;
+	m = (MapSlice) {
+		.slice[0] =
 			{ N, N, N, N, N, N, N },
 			{ N, W, W, W, W, W, N },
 			{ N, W, N, N, N, W, N },
@@ -81,5 +84,5 @@ void LoadMap1(Map *map) {
 			{ N, W, W, W, W, W, N },
 			{ N, N, N, N, N, N, N },
 	};
-	Map_GenerateFromItemTypeArray(map, m);
+	Map_AppendFromItemTypeArray(map, m);
 }
