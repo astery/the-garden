@@ -12,7 +12,7 @@
 
 int AssetsLoad(SDL_Renderer *render) {
 	int ret;
-	IMG_INIT(&img_menu, "title.png");
+	IMG_INIT(&img_menu, "start_screen.png");
 	IMG_INIT(&img_arrow_down_1, "arrow_down_1.png");
 	IMG_INIT(&img_arrow_down_2, "arrow_down_2.png");
 	IMG_INIT(&img_arrow_up_1, "arrow_up_1.png");
@@ -28,7 +28,7 @@ int AssetsLoad(SDL_Renderer *render) {
 			&img_arrow_down_1,
 			&img_arrow_down_2
 		},
-		.width = 5,
+		.width = 7,
 		.height = 7
 	};
 
@@ -38,7 +38,7 @@ int AssetsLoad(SDL_Renderer *render) {
 			&img_arrow_up_1,
 			&img_arrow_up_2
 		},
-		.width = 5,
+		.width = 7,
 		.height = 7
 	};
 
@@ -49,7 +49,7 @@ int AssetsLoad(SDL_Renderer *render) {
 			&img_arrow_left_2
 		},
 		.width = 7,
-		.height = 5
+		.height = 7
 	};
 
 	anim_arrow_right = (Animation) {
@@ -59,7 +59,7 @@ int AssetsLoad(SDL_Renderer *render) {
 			&img_arrow_right_2
 		},
 		.width = 7,
-		.height = 5
+		.height = 7
 	};
 
 	return ret;

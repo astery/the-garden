@@ -18,7 +18,7 @@
 #define SEP "/"
 #endif
 
-#define IMG_PATH "." SEP "passets" SEP
+#define IMG_PATH "." SEP "assets" SEP "screens_assets" SEP
 
 Image img_menu;
 Image img_map;
