@@ -11,6 +11,7 @@
 #include "game_typedefs.h"
 #include "game_state.h"
 #include "map.h"
+#include "assets.h"
 
 typedef enum Orientation Orientation;
 typedef enum PawnType PawnType;
@@ -34,12 +35,14 @@ struct Pawn {
 
 struct Game {
 	GameState *state;
-	Map maps[1];
+	Map maps[GAME_MAPS_COUNT];
+	int current_map_index;
 	Map *current_map;
 	Pawn player;
 };
 
 void Game_Init(Game *game);
+void Game_SetCurrentMap(Game *game, int map_index);
 void Game_SetCurrentState(Game *game, GameStateName state_name);
 void Game_MovePawn(Game *game, Pawn *pawn, Orientation orient);
 void Game_MovePlayer(Game *game, Orientation orient);

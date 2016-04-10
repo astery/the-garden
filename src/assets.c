@@ -62,6 +62,9 @@ int AssetsLoad(SDL_Renderer *render) {
 		.height = 7
 	};
 
+	LoadMap1(&maps[0]);
+	LoadMap2(&maps[1]);
+
 	return ret;
 }
 
@@ -85,4 +88,30 @@ void LoadMap1(Map *map) {
 			{ N, N, N, N, N, N, N },
 	};
 	Map_AppendFromItemTypeArray(map, m);
+}
+
+void LoadMap2(Map *map) {
+	Map_Init(map);
+	MapSlice m;
+	m = (MapSlice) {
+		.slice[0] =
+			{ N, N, N, N, N, N, N },
+			{ N, W, W, W, W, W, N },
+			{ N, W, N, M, N, W, N },
+			{ N, W, N, W, N, W, N },
+			{ N, W, P, W, E, W, N },
+			{ N, W, W, W, W, W, N },
+			{ N, N, N, N, N, N, N },
+	};
+	Map_AppendFromItemTypeArray(map, m);
+}
+
+void LoadMaps(Map maps_dest[GAME_MAPS_COUNT]) {
+	int i;
+	Map *map;
+
+	for (i=0; i < GAME_MAPS_COUNT; i++) {
+		map = &maps_dest[i];
+		*map = maps[i];
+	}
 }

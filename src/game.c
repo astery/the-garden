@@ -12,8 +12,8 @@
 
 void Game_Init(Game *game) {
 	game->state = NULL;
-	LoadMap1(&game->maps[0]);
-	game->current_map = &game->maps[0];
+	LoadMaps(game->maps);
+	Game_SetCurrentMap(game, 0);
 
 	MapItem *item;
 	int i;
@@ -31,6 +31,11 @@ void Game_Init(Game *game) {
 	game->player.type = PT_PLAYER;
 	game->player.orient = PO_N;
 	Game_SetCurrentState(game, GS_MENU);
+}
+
+void Game_SetCurrentMap(Game *game, int map_index) {
+	game->current_map_index = map_index;
+	game->current_map = &game->maps[map_index];
 }
 
 void Game_SetCurrentState(Game *game, GameStateName state_name) {
