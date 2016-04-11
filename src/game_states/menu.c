@@ -6,6 +6,7 @@
  */
 
 #include "menu.h"
+#include "../application.h"
 #include <stdio.h>
 #include "../assets.h"
 
@@ -14,11 +15,22 @@
 
 void MenuGS_HandleInput(Game *game, SDL_Event *e) {
 	if (e->type == SDL_KEYDOWN) {
-		switch(e->key.keysym.scancode) {
-		case SDL_SCANCODE_SPACE:
-		case SDL_SCANCODE_RETURN:
+		switch(e->key.keysym.sym) {
+		case SDLK_SPACE:
+		case SDLK_RETURN:
 			Game_SetCurrentState(game, GS_TUTOR);
 			break;
+		}
+
+		if (DEBUG) {
+			switch(e->key.keysym.sym) {
+			case SDLK_m:
+				Game_SetCurrentState(game, GS_MAP);
+				break;
+			case SDLK_f:
+				Game_SetCurrentState(game, GS_FIGHT);
+				break;
+			}
 		}
 	}
 }

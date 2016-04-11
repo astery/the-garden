@@ -16,6 +16,7 @@ enum GameStateName {
 	GS_TUTOR,
 	GS_MAP,
 	GS_FPV,
+	GS_FIGHT,
 	GS_ITEMS_SIZE
 };
 
