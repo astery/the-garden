@@ -5,7 +5,7 @@
  *      Author: astery
  */
 
-#include "FPV.h"
+#include "fpv.h"
 
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wswitch"
