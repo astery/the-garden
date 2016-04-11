@@ -15,6 +15,9 @@
 
 #define DEBUG true
 
+#define AWIDTH 7
+#define AHEIGHT 7
+
 typedef struct {
 	SDL_Window *window;
 	SDL_Renderer *renderer;
@@ -22,7 +25,7 @@ typedef struct {
 	int screen_height;
 } Application;
 
-int Application_Init(Application *app, int screen_width, int screen_height, int logical_width, int logical_height);
+int Application_Init(Application *app, int screen_width, int screen_height);
 void Application_RunLoop(Application *app, Game *game);
 void Application_Destroy(Application *app);
 

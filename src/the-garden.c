@@ -20,7 +20,7 @@
 int main(int argc, char* argv[])
 {
 	Application app;
-	if (Application_Init(&app, 320, 320, 7, 7) != 0) {
+	if (Application_Init(&app, 320, 320) != 0) {
 		return 1;
 	}
 

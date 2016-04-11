@@ -20,6 +20,13 @@ void Game_Reset(Game *game) {
 	LoadMaps(game->maps);
 	Game_SetCurrentMap(game, 0);
 	Game_SetCurrentState(game, GS_MENU);
+	Game_ResetPlayer(game);
+}
+
+void Game_ResetPlayer(Game *game) {
+	game->player.health = 3;
+	game->player.atk = 2;
+	game->player.def = 1;
 }
 
 void Game_UpdatePlayerReference(Game *game) {

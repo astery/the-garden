@@ -7,7 +7,6 @@
 
 #include "map.h"
 #include <stdlib.h>
-#include <SDL2/SDL_pixels.h>
 #include "colors.h"
 
 int MapItem_CompareByType(const void* a, const void* b) {

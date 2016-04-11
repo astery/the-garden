@@ -14,9 +14,7 @@
 int Application_Init(
 		Application *app,
 		int screen_width,
-		int screen_height,
-		int logical_width,
-		int logical_height
+		int screen_height
 		) {
 	if (SDL_Init(SDL_INIT_VIDEO) != 0){
 		printf("Unable to initialize SDL\n");
@@ -39,7 +37,7 @@ int Application_Init(
 		SDL_Quit();
 		return 1;
 	}
-	SDL_RenderSetLogicalSize(app->renderer, 7, 7);
+	SDL_RenderSetLogicalSize(app->renderer, AWIDTH, AHEIGHT);
 
 	return 0;
 }

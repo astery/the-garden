@@ -31,6 +31,9 @@ struct Pawn {
 	PawnType type;
 	Position *pos;
 	Orientation orient;
+	int health;
+	int atk;
+	int def;
 };
 
 struct Game {
@@ -47,6 +50,7 @@ void Game_SetCurrentMap(Game *game, int map_index);
 void Game_SetCurrentState(Game *game, GameStateName state_name);
 void Game_MovePawn(Game *game, Pawn *pawn, Orientation orient);
 void Game_MovePlayer(Game *game, Orientation orient);
+void Game_ResetPlayer(Game *game);
 
 Position Pawn_PeekMove(Pawn *pawn, Orientation orient);
 //void Pawn_RotateLeft(Pawn *pawn);

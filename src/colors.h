@@ -1,9 +1,15 @@
+#ifndef COLORS_H_
+#define COLORS_H_
 
 #include <SDL2/SDL_pixels.h>
 
-SDL_Color color_blue = { 0x06,0x67,0xB8 };
-SDL_Color color_magenta = { 0x78,0x07,0x75 };
-SDL_Color color_black = { 0x10,0x0,0x20 };
-SDL_Color color_dark_green = { 0x18,0x56,0x13 };
-SDL_Color color_red = { 0xA3,0x10,0x14 };
-SDL_Color color_light_green = { 0x98,0xCE,0x8B };
+SDL_Color color_blue;
+SDL_Color color_magenta;
+SDL_Color color_black;
+SDL_Color color_dark_green;
+SDL_Color color_red;
+SDL_Color color_light_green;
+SDL_Color color_light_gray;
+SDL_Color color_white;
+
+#endif /* COLORS_H_ */
