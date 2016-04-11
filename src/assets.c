@@ -7,20 +7,22 @@
 
 #include "assets.h"
 
-#define IMG_INIT(var, res) ret = Image_Init(var, IMG_PATH res, render);\
+#define IMG_INIT(path, var, res) ret = Image_Init(var, path res, render);\
 	if (ret != 0) return ret;
 
 int AssetsLoad(SDL_Renderer *render) {
 	int ret;
-	IMG_INIT(&img_menu, "start_screen.png");
-	IMG_INIT(&img_arrow_down_1, "arrow_down_1.png");
-	IMG_INIT(&img_arrow_down_2, "arrow_down_2.png");
-	IMG_INIT(&img_arrow_up_1, "arrow_up_1.png");
-	IMG_INIT(&img_arrow_up_2, "arrow_up_2.png");
-	IMG_INIT(&img_arrow_left_1, "arrow_left_1.png");
-	IMG_INIT(&img_arrow_left_2, "arrow_left_2.png");
-	IMG_INIT(&img_arrow_right_1, "arrow_right_1.png");
-	IMG_INIT(&img_arrow_right_2, "arrow_right_2.png");
+	IMG_INIT(IMG_SCREENS_PATH, &img_menu, "start_screen.png");
+	IMG_INIT(IMG_SCREENS_PATH, &img_arrow_down_1, "arrow_down_1.png");
+	IMG_INIT(IMG_SCREENS_PATH, &img_arrow_down_2, "arrow_down_2.png");
+	IMG_INIT(IMG_SCREENS_PATH, &img_arrow_up_1, "arrow_up_1.png");
+	IMG_INIT(IMG_SCREENS_PATH, &img_arrow_up_2, "arrow_up_2.png");
+	IMG_INIT(IMG_SCREENS_PATH, &img_arrow_left_1, "arrow_left_1.png");
+	IMG_INIT(IMG_SCREENS_PATH, &img_arrow_left_2, "arrow_left_2.png");
+	IMG_INIT(IMG_SCREENS_PATH, &img_arrow_right_1, "arrow_right_1.png");
+	IMG_INIT(IMG_SCREENS_PATH, &img_arrow_right_2, "arrow_right_2.png");
+
+	IMG_INIT(IMG_FPV_PATH, &img_front_1_side_0, "front-1_side-0.png");
 
 	anim_arrow_down = (Animation) {
 		.steps_count = 2,

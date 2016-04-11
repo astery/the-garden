@@ -18,7 +18,8 @@
 #define SEP "/"
 #endif
 
-#define IMG_PATH "." SEP "assets" SEP "screens_assets" SEP
+#define IMG_SCREENS_PATH "." SEP "assets" SEP "screens_assets" SEP
+#define IMG_FPV_PATH "." SEP "assets" SEP "first_person_screens_assets" SEP
 
 Image img_menu;
 Image img_map;
@@ -30,6 +31,8 @@ Image img_arrow_left_1;
 Image img_arrow_left_2;
 Image img_arrow_right_1;
 Image img_arrow_right_2;
+
+Image img_front_1_side_0;
 
 Animation anim_arrow_down;
 Animation anim_arrow_up;

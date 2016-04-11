@@ -6,6 +6,7 @@
  */
 
 #include "game.h"
+#include <stdio.h>
 #include "assets.h"
 #include "game_states.h"
 #include "animation.h"

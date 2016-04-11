@@ -15,6 +15,7 @@ enum GameStateName {
 	GS_MENU = 0,
 	GS_TUTOR,
 	GS_MAP,
+	GS_FPV,
 	GS_ITEMS_SIZE
 };
 

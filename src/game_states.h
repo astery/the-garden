@@ -12,11 +12,13 @@
 #include "game_states/menu.h"
 #include "game_states/tutorial.h"
 #include "game_states/map.h"
+#include "game_states/fpv.h"
 
 GameState g_game_states[] = {
 		{GS_MENU, MenuGS_HandleInput, MenuGS_Render},
 		{GS_TUTOR, TutorialGS_HandleInput, TutorialGS_Render, TutorialGS_OnEnter, TutorialGS_OnLeave},
 		{GS_MAP, MapGS_HandleInput, MapGS_Render},
+		{GS_FPV, FPVGS_HandleInput, FPVGS_Render},
 };
 
 #endif /* GAME_STATES_H_ */
