@@ -30,21 +30,21 @@ void Game_ResetPlayer(Game *game) {
 }
 
 void Game_UpdatePlayerReference(Game *game) {
-	MapItem *item;
-	int i;
-	for (i=0; i < game->current_map->items_count; i++) {
-		item = &game->current_map->items[i];
-		if (item->type == PLAYER) {
-			game->player.pos = &item->pos;
+	int i, j;
+	for (i=0; i < MAP_SIZE; i++) {
+		for (j=0; j < MAP_SIZE; j++) {
+			Tile *tile = &game->current_map->tiles[i][j];
+			TileItem *item = Tile_GetTopItem(tile);
+			if (item != NULL && item->type == PLAYER) {
+				Pawn_Init(&game->player, tile);
+			}
+
 		}
 	}
 
-	if (game->player.pos == NULL) {
+	if (game->player.tile == NULL) {
 		printf("Game: current map has no player");
 	}
-
-	game->player.type = PT_PLAYER;
-	game->player.orient = PO_N;
 }
 
 void Game_SetCurrentMap(Game *game, int map_index) {
@@ -72,7 +72,7 @@ void Game_MovePawn(Game *game, Pawn *pawn, Orientation orient) {
 		return;
 	}
 
-	MapItem *item = Map_GetFirstItemAtPos(game->current_map, p.x, p.y);
+	TileItem *item = Map_GetTopItemAtPos(game->current_map, p.x, p.y);
 	if (item == NULL) {
 		return;
 	}
@@ -81,32 +81,11 @@ void Game_MovePawn(Game *game, Pawn *pawn, Orientation orient) {
 	case WALL:
 		break;
 	default:
-		*pawn->pos = p;
+		Pawn_MoveTo(pawn, game->current_map, &p);
 		break;
 	}
 }
 
 void Game_MovePlayer(Game *game, Orientation orient) {
 	Game_MovePawn(game, &game->player, orient);
-}
-
-Position Pawn_PeekMove(Pawn *pawn, Orientation orient) {
-	Position p = *pawn->pos;
-	switch (orient) {
-		case PO_N:
-			p.y--;
-			break;
-		case PO_S:
-			p.y++;
-			break;
-		case PO_W:
-			p.x--;
-			break;
-		case PO_E:
-			p.x++;
-			break;
-		case PO_SIZE:
-			break;
-	}
-	return p;
 }

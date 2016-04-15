@@ -76,11 +76,20 @@ int AssetsLoad(SDL_Renderer *render) {
 #define M MONSTER
 #define E EXIT
 
+Pawn map1_pawns[] = {
+		{ .type = PT_PLAYER, .health = 1, .atk = 1, .def = 0 }
+};
+
+Pawn map2_pawns[] = {
+		{ .type = PT_PLAYER, .health = 1, .atk = 1, .def = 0 },
+		{ .type = PT_MONSTER, .health = 1, .atk = 1, .def = 0 }
+};
+
 void LoadMap1(Map *map) {
 	Map_Init(map);
 	MapSlice m;
 	m = (MapSlice) {
-		.slice[0] =
+		.tiles[0] =
 			{ N, N, N, N, N, N, N },
 			{ N, W, W, W, W, W, N },
 			{ N, W, N, N, N, W, N },
@@ -90,13 +99,14 @@ void LoadMap1(Map *map) {
 			{ N, N, N, N, N, N, N },
 	};
 	Map_AppendFromItemTypeArray(map, m);
+	Pawn_Init(&map1_pawns[0], Map_GetTopItemAtPos(map, 2, 4));
 }
 
 void LoadMap2(Map *map) {
 	Map_Init(map);
 	MapSlice m;
 	m = (MapSlice) {
-		.slice[0] =
+		.tiles[0] =
 			{ N, N, N, N, N, N, N },
 			{ N, W, W, W, W, W, N },
 			{ N, W, N, M, N, W, N },
@@ -106,6 +116,8 @@ void LoadMap2(Map *map) {
 			{ N, N, N, N, N, N, N },
 	};
 	Map_AppendFromItemTypeArray(map, m);
+	Pawn_Init(&map2_pawns[0], Map_GetTopItemAtPos(map, 2, 4));
+	Pawn_Init(&map2_pawns[1], Map_GetTopItemAtPos(map, 4, 4));
 }
 
 void LoadMaps(Map maps_dest[GAME_MAPS_COUNT]) {

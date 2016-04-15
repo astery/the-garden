@@ -10,6 +10,7 @@
 
 #include "image.h"
 #include "animation.h"
+#include "map_typedefs.h"
 #include "map.h"
 
 #ifdef _WIN32

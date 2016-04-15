@@ -36,7 +36,7 @@ void MapGS_HandleInput(Game *game, SDL_Event *e) {
 
 	if (o != -1) {
 		Position pos = Pawn_PeekMove(&game->player, o);
-		MapItem *item = Map_GetFirstItemAtPos(game->current_map, pos.x, pos.y);
+		TileItem *item = Map_GetTopItemAtPos(game->current_map, pos.x, pos.y);
 		switch (item->type) {
 		case EXIT: ;
 			int next_map_index = game->current_map_index + 1;

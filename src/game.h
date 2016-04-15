@@ -13,28 +13,6 @@
 #include "map.h"
 #include "assets.h"
 
-typedef enum Orientation Orientation;
-typedef enum PawnType PawnType;
-typedef struct Pawn Pawn;
-
-enum Orientation {
-	PO_N = 0, PO_S, PO_W, PO_E, PO_SIZE
-};
-
-enum PawnType {
-	PT_PLAYER = 0,
-	PT_MONSTER,
-	PT_SIZE
-};
-
-struct Pawn {
-	PawnType type;
-	Position *pos;
-	Orientation orient;
-	int health;
-	int atk;
-	int def;
-};
 
 struct Game {
 	GameState *state;
@@ -51,12 +29,6 @@ void Game_SetCurrentState(Game *game, GameStateName state_name);
 void Game_MovePawn(Game *game, Pawn *pawn, Orientation orient);
 void Game_MovePlayer(Game *game, Orientation orient);
 void Game_ResetPlayer(Game *game);
-
-Position Pawn_PeekMove(Pawn *pawn, Orientation orient);
-//void Pawn_RotateLeft(Pawn *pawn);
-//void Pawn_RotateRight(Pawn *pawn);
-//void Pawn_MoveForward(Pawn *pawn);
-//void Pawn_MoveBackward(Pawn *pawn);
 
 
 #endif /* GAME_H_ */
