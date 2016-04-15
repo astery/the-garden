@@ -10,6 +10,7 @@
 
 #include <stdbool.h>
 #include "map_typedefs.h"
+#include "pawn.h"
 
 typedef struct Position Position;
 
@@ -18,6 +19,7 @@ struct Position {
 	int y;
 };
 
+Position Position_NextToOrientation(Position *pos, Orientation orient);
 bool Position_IsInMapBoundaries(Position *pos, Map *map);
 
 #endif /* POSITION_H_ */

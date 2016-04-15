@@ -27,21 +27,6 @@ void Pawn_MoveToTile(Pawn *pawn, Tile *tile) {
 
 Position Pawn_PeekMove(Pawn *pawn, Orientation orient) {
 	Position p = pawn->tile->pos;
-	switch (orient) {
-		case PO_N:
-			p.y--;
-			break;
-		case PO_S:
-			p.y++;
-			break;
-		case PO_W:
-			p.x--;
-			break;
-		case PO_E:
-			p.x++;
-			break;
-		case PO_SIZE:
-			break;
-	}
-	return p;
+	Position pn = Position_NextToOrientation(&p, orient);
+	return pn;
 }

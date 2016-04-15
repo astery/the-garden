@@ -7,6 +7,7 @@
 
 #include "tile.h"
 #include <stdlib.h>
+#include <stdio.h>
 #include "tile_item.h"
 #include "tile.h"
 

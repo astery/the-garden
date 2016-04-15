@@ -27,6 +27,8 @@ struct MapSlice {
 void Map_Init(Map *map);
 void Map_AppendFromItemTypeArray(Map *map, MapSlice slice);
 void Map_Render(Map *map, SDL_Renderer *render);
-TileItem* Map_GetTopItemAtPos(Map *map, int x, int y);
+TileItem* Map_GetTopItemAt(Map *map, int x, int y);
+TileItem* Map_GetTopItemAtPos(Map *map, Position pos);
+int Map_GetFrontWallDistance(Map *map, Position *pos, Orientation orient);
 
 #endif /* MAP_H_ */

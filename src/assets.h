@@ -33,7 +33,18 @@ Image img_arrow_left_2;
 Image img_arrow_right_1;
 Image img_arrow_right_2;
 
-Image img_front_1_side_0;
+Image img_fpv_bground;
+Image img_front_1;
+Image img_front_2;
+Image img_front_3;
+Image img_side_0;
+Image img_side_1;
+Image img_side_2;
+Image img_side_3;
+Image img_side_0_opened;
+Image img_side_1_opened;
+Image img_side_2_opened;
+Image img_side_3_opened;
 
 Animation anim_arrow_down;
 Animation anim_arrow_up;

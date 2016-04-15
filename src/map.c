@@ -8,6 +8,7 @@
 #include "map.h"
 #include <stdlib.h>
 #include "colors.h"
+#include "position.h"
 
 void Map_Init(Map *map) {
 	int i, j;
@@ -57,9 +58,35 @@ void Map_Render(Map *map, SDL_Renderer *renderer) {
 	return;
 }
 
-TileItem* Map_GetTopItemAtPos(Map *map, int x, int y) {
+TileItem* Map_GetTopItemAt(Map *map, int x, int y) {
 	Tile *tile = &map->tiles[x][y];
-
 	return Tile_GetTopItem(tile);
+}
+
+TileItem* Map_GetTopItemAtPos(Map *map, Position pos) {
+	return Map_GetTopItemAt(map, pos.x, pos.y);
+}
+
+TileItem* Map_IsWallAtPos(Map *map, int x, int y) {
+	return NULL;
+}
+
+int Map_GetFrontWallDistance(Map *map, Position *pos, Orientation orient) {
+	int dist = 0;
+	Position p_next = *pos;
+	do {
+		dist++;
+		p_next = Position_NextToOrientation(&p_next, orient);
+		// TODO: traverse all
+		TileItem *item = Map_GetTopItemAtPos(map, p_next);
+		if (item->type == WALL) {
+			return dist;
+		}
+	} while (Position_IsInMapBoundaries(&p_next, map));
+	return dist;
+}
+
+Position* Map_GetNearestWall(Map *map, int x, int y, Orientation o) {
+	return NULL;
 }
 
