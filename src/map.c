@@ -82,6 +82,12 @@ MapItem* Map_GetFirstItemAtPos(Map *map, int x, int y) {
 	return NULL;
 }
 
+MapItem* Map_IsWallAtPos(Map *mp, int x, int y) {
+
+}
+
+Position* Map_GetNearestWall(Map *map, int x, int y, Orientation o)
+
 void MapItem_Render(MapItem *item, SDL_Renderer *render) {
 	SDL_Color *c;
 	switch (item->type) {

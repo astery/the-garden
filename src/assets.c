@@ -22,7 +22,19 @@ int AssetsLoad(SDL_Renderer *render) {
 	IMG_INIT(IMG_SCREENS_PATH, &img_arrow_right_1, "arrow_right_1.png");
 	IMG_INIT(IMG_SCREENS_PATH, &img_arrow_right_2, "arrow_right_2.png");
 
-	IMG_INIT(IMG_FPV_PATH, &img_front_1_side_0, "front-1_side-0.png");
+	IMG_INIT(IMG_FPV_PATH, &img_fpv_bground, "background.png");
+	IMG_INIT(IMG_FPV_PATH, &img_front_1, "front-1.png");
+	IMG_INIT(IMG_FPV_PATH, &img_front_2, "front-2.png");
+	IMG_INIT(IMG_FPV_PATH, &img_front_3, "front-3.png");
+	IMG_INIT(IMG_FPV_PATH, &img_side_0, "side-0.png");
+	IMG_INIT(IMG_FPV_PATH, &img_side_1, "side-1.png");
+	IMG_INIT(IMG_FPV_PATH, &img_side_2, "side-2.png");
+	IMG_INIT(IMG_FPV_PATH, &img_side_3, "side-3.png");
+	IMG_INIT(IMG_FPV_PATH, &img_side_0_opened, "side-0-opened.png");
+	IMG_INIT(IMG_FPV_PATH, &img_side_1_opened, "side-1-opened.png");
+	IMG_INIT(IMG_FPV_PATH, &img_side_2_opened, "side-2-opened.png");
+	IMG_INIT(IMG_FPV_PATH, &img_side_3_opened, "side-3-opened.png");
+
 
 	anim_arrow_down = (Animation) {
 		.steps_count = 2,
