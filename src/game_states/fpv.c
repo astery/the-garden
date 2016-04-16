@@ -56,34 +56,50 @@ void FPVGS_HandleInput(Game *game, SDL_Event *e) {
 
 void FPVGS_RenderSideWall(Game *game, Position pos, int dist, SDL_Renderer *renderer, SDL_RendererFlip flip) {
 	int i = dist;
+
 	for (; i>=0; i--) {
 		switch(i) {
 		case 3:
-			if (Map_IsWallAtPos(game->current_map, Position_RelativeTo(&pos, 0, -3))) {
-				SDL_RenderCopyEx(renderer, img_side_3_opened.texture, NULL, NULL, 0, NULL, flip);
+			if (Map_IsWallAtPos(game->current_map, Position_RelativeTo(&pos, 0, -2))) {
+				if (dist != 3 && Map_IsWallAtPos(game->current_map, Position_RelativeTo(&pos, 0, -3)))
+					SDL_RenderCopyEx(renderer, img_side_3_opened.texture, NULL, NULL, 0, NULL, flip);
+				else
+					SDL_RenderCopyEx(renderer, img_side_3.texture, NULL, NULL, 0, NULL, flip);
 			} else {
-				SDL_RenderCopyEx(renderer, img_side_3.texture, NULL, NULL, 0, NULL, flip);
+				if (dist == 3)
+					SDL_RenderCopyEx(renderer, img_side_3_opened.texture, NULL, NULL, 0, NULL, flip);
+				else
+					SDL_RenderCopyEx(renderer, img_side_3.texture, NULL, NULL, 0, NULL, flip);
 			}
 			break;
 		case 2:
-			if (Map_IsWallAtPos(game->current_map, Position_RelativeTo(&pos, 0, -2))) {
-				SDL_RenderCopyEx(renderer, img_side_2_opened.texture, NULL, NULL, 0, NULL, flip);
+			if (Map_IsWallAtPos(game->current_map, Position_RelativeTo(&pos, 0, -1))) {
+				if (dist != 2 && Map_IsWallAtPos(game->current_map, Position_RelativeTo(&pos, 0, -2)))
+					SDL_RenderCopyEx(renderer, img_side_2_opened.texture, NULL, NULL, 0, NULL, flip);
+				else
+					SDL_RenderCopyEx(renderer, img_side_2.texture, NULL, NULL, 0, NULL, flip);
 			} else {
-				SDL_RenderCopyEx(renderer, img_side_2.texture, NULL, NULL, 0, NULL, flip);
+				if (dist == 2)
+					SDL_RenderCopyEx(renderer, img_side_2_opened.texture, NULL, NULL, 0, NULL, flip);
+				else
+					SDL_RenderCopyEx(renderer, img_side_2.texture, NULL, NULL, 0, NULL, flip);
 			}
 			break;
 		case 1:
-			if (Map_IsWallAtPos(game->current_map, Position_RelativeTo(&pos, 0, -1))) {
-				SDL_RenderCopyEx(renderer, img_side_1_opened.texture, NULL, NULL, 0, NULL, flip);
-			} else {
-				SDL_RenderCopyEx(renderer, img_side_1.texture, NULL, NULL, 0, NULL, flip);
-			}
-			break;
-		case 0:
 			if (Map_IsWallAtPos(game->current_map, Position_RelativeTo(&pos, 0, 0))) {
-				SDL_RenderCopyEx(renderer, img_side_0_opened.texture, NULL, NULL, 0, NULL, flip);
+				if (dist != 1 && Map_IsWallAtPos(game->current_map, Position_RelativeTo(&pos, 0, -1))) {
+					SDL_RenderCopyEx(renderer, img_side_0_opened.texture, NULL, NULL, 0, NULL, flip);
+				}
+				else {
+					SDL_RenderCopyEx(renderer, img_side_0.texture, NULL, NULL, 0, NULL, flip);
+				}
 			} else {
-				SDL_RenderCopyEx(renderer, img_side_0.texture, NULL, NULL, 0, NULL, flip);
+				if (dist == 1 ){
+					SDL_RenderCopyEx(renderer, img_side_1_opened.texture, NULL, NULL, 0, NULL, flip);
+				}
+				else {
+					SDL_RenderCopyEx(renderer, img_side_1.texture, NULL, NULL, 0, NULL, flip);
+				}
 			}
 			break;
 		}
