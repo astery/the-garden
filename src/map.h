@@ -9,6 +9,7 @@
 #define MAP_H_
 
 #include "SDL2/SDL.h"
+#include <stdbool.h>
 #include "map_typedefs.h"
 #include "tile_item.h"
 #include "tile.h"
@@ -29,6 +30,7 @@ void Map_AppendFromItemTypeArray(Map *map, MapSlice slice);
 void Map_Render(Map *map, SDL_Renderer *render);
 TileItem* Map_GetTopItemAt(Map *map, int x, int y);
 TileItem* Map_GetTopItemAtPos(Map *map, Position pos);
+bool Map_IsWallAtPos(Map *map, Position pos);
 int Map_GetFrontWallDistance(Map *map, Position *pos, Orientation orient);
 
 #endif /* MAP_H_ */

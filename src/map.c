@@ -67,8 +67,12 @@ TileItem* Map_GetTopItemAtPos(Map *map, Position pos) {
 	return Map_GetTopItemAt(map, pos.x, pos.y);
 }
 
-TileItem* Map_IsWallAtPos(Map *map, int x, int y) {
-	return NULL;
+bool Map_IsWallAtPos(Map *map, Position pos) {
+	if (!Position_IsInMapBoundaries(&pos, map)) {
+		return 0;
+	}
+	TileItem *item = Map_GetTopItemAtPos(map, pos);
+	return item->type == WALL;
 }
 
 int Map_GetFrontWallDistance(Map *map, Position *pos, Orientation orient) {
@@ -84,9 +88,5 @@ int Map_GetFrontWallDistance(Map *map, Position *pos, Orientation orient) {
 		}
 	} while (Position_IsInMapBoundaries(&p_next, map));
 	return dist;
-}
-
-Position* Map_GetNearestWall(Map *map, int x, int y, Orientation o) {
-	return NULL;
 }
 
