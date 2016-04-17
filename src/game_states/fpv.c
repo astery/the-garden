@@ -67,9 +67,15 @@ void FPVGS_Render(Game *game, SDL_Renderer *renderer) {
 	Pawn *p = &game->player;
 	TileItem *item;
 
+	int dist = Map_GetFrontWallDistance(game->current_map, &p->tile->pos, p->orient);
+
 	int i;
 	for (i=4; i >= 1; i--) {
 		Position pos = Position_RelativeTo(&p->tile->pos, 0, i, p->orient);
+		if (dist < i) {
+			continue;
+		}
+
 		item = Map_GetTopItemAtPos(game->current_map, pos);
 		TileItem_RenderFPV(item, renderer, i);
 	}
