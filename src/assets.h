@@ -22,6 +22,12 @@
 #define IMG_SCREENS_PATH "." SEP "assets" SEP "screens_assets" SEP
 #define IMG_FPV_PATH "." SEP "assets" SEP "first_person_screens_assets" SEP
 
+#define SND_PATH "." SEP "assets" SEP "sounds" SEP
+#define SND_BACKGROUND SND_PATH "day_43_mono.mp3"
+#define SND_FOOTSTEPS SND_PATH "footsteps.mp3"
+#define SND_OPEN_DOOR SND_PATH "door.mp3"
+#define SND_ATTACK SND_PATH "attack.mp3"
+
 Image img_menu;
 Image img_map;
 Image img_arrow_down_1;

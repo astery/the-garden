@@ -1,15 +1,16 @@
 /*
  * sounds.h
  *
- *  Created on: 18 апр. 2016 г.
+ *  Created on: 18 пїЅпїЅпїЅ. 2016 пїЅ.
  *      Author: Vladmir
  */
 
 #ifndef SOUNDS_H_
 #define SOUNDS_H_
 
-static const char *MY_COOL_MP3;
-
-void SND_PlayMusic();
+void SND_PlayBackground();
+void SND_PlayFootsteps();
+void SND_PlayOpenDoor();
+void SND_PlayAttack();
 
 #endif /* SOUNDS_H_ */

@@ -10,6 +10,7 @@
 #include "assets.h"
 #include "game_states.h"
 #include "animation.h"
+#include "sounds.h"
 
 void Game_Init(Game *game) {
 	Game_Reset(game);
@@ -107,9 +108,14 @@ bool Game_IfPlayerStepOnMonsterGoFight(Game *game, Orientation orient) {
 			return false;
 		}
 
+		SND_PlayAttack();
+
 		Game_PawnHitPawn(game, p, m);
 		if (m->health > 0) {
 			Game_PawnHitPawn(game, m, p);
+			if (p->health <= 0) {
+				Game_SetCurrentState(game, GS_WIN);
+			}
 		}
 
 		return true;
@@ -122,6 +128,9 @@ void Game_MovePlayer(Game *game, Orientation orient) {
 		game->player.orient = orient;
 		return;
 	}
+
+	SND_PlayFootsteps();
+
 	Game_MovePawn(game, &game->player, orient);
 	game->defeat_enemy_on_this_step = false;
 }
@@ -155,6 +164,8 @@ bool Game_IsMonsterNearPlayer(Game *game) {
 }
 
 void Game_StepInDoor(Game *game) {
+	SND_PlayOpenDoor();
+
 	int next_map_index = game->current_map_index + 1;
 	if (next_map_index >= GAME_MAPS_COUNT - 1) {
 		Game_SetCurrentState(game, GS_WIN);
