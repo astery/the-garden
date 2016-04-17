@@ -39,6 +39,7 @@ int AssetsLoad(SDL_Renderer *render) {
 	IMG_INIT(IMG_FPV_PATH, &img_door_1, "door-1.png");
 	IMG_INIT(IMG_FPV_PATH, &img_door_2, "door-2.png");
 	IMG_INIT(IMG_FPV_PATH, &img_door_3, "door-3.png");
+	IMG_INIT(IMG_FPV_PATH, &img_door_4, "door-4.png");
 
 	anim_arrow_down = (Animation) {
 		.steps_count = 2,

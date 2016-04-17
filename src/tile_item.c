@@ -49,6 +49,9 @@ void TileItem_RenderFPV(TileItem *item, SDL_Renderer *renderer, int dist) {
 		break;
 	case EXIT:
 		switch(dist) {
+		case 4:
+			SDL_RenderCopy(renderer, img_door_4.texture, NULL, NULL);
+			break;
 		case 3:
 			SDL_RenderCopy(renderer, img_door_3.texture, NULL, NULL);
 			break;

@@ -50,6 +50,7 @@ Image img_side_0_pixel;
 Image img_door_1;
 Image img_door_2;
 Image img_door_3;
+Image img_door_4;
 
 Animation anim_arrow_down;
 Animation anim_arrow_up;

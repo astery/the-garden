@@ -66,12 +66,11 @@ void FPVGS_Render(Game *game, SDL_Renderer *renderer) {
 	Pawn *p = &game->player;
 	TileItem *item;
 
-	item = Map_GetTopItemAtPos(game->current_map, Position_RelativeTo(&p->tile->pos, 0, 3, p->orient));
-	TileItem_RenderFPV(item, renderer, 3);
-	item = Map_GetTopItemAtPos(game->current_map, Position_RelativeTo(&p->tile->pos, 0, 2, p->orient));
-	TileItem_RenderFPV(item, renderer, 2);
-	item = Map_GetTopItemAtPos(game->current_map, Position_RelativeTo(&p->tile->pos, 0, 1, p->orient));
-	TileItem_RenderFPV(item, renderer, 1);
+	int i;
+	for (i=4; i >= 1; i--) {
+		item = Map_GetTopItemAtPos(game->current_map, Position_RelativeTo(&p->tile->pos, 0, i, p->orient));
+		TileItem_RenderFPV(item, renderer, i);
+	}
 }
 
 void FPVGS_RenderSideWall(Game *game, Position side_pos, int dist, Orientation orient, SDL_Renderer *renderer, SDL_RendererFlip flip) {
