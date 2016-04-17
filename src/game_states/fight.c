@@ -29,8 +29,6 @@ void FightGS_HandleInput(Game *game, SDL_Event *e) {
    }
 }
 
-#pragma GCC diagnostic pop
-
 void FightGS_RenderHUD(Game *game, SDL_Renderer *renderer) {
 	int w = AWIDTH - 1;
 	int h = AHEIGHT - 1;
@@ -69,6 +67,8 @@ void FightGS_RenderStats(FightGS_Stats stat, Game *game, SDL_Renderer *renderer)
 		break;
 	}
 }
+
+#pragma GCC diagnostic pop
 
 void FightGS_Render(Game *game, SDL_Renderer *renderer) {
 	FightGS_RenderStats(ST_HP, game, renderer);
