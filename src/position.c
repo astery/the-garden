@@ -10,30 +10,31 @@
 #include "map.h"
 
 Position Position_NextToOrientation(Position *pos, Orientation orient) {
+	return Position_RelativeTo(pos, 0, 1, orient);
+}
+
+Position Position_RelativeTo(Position *pos, int x, int y, Orientation orient) {
 	Position p = *pos;
 	switch (orient) {
 		case PO_N:
-			p.y--;
+			p.x += x;
+			p.y -= y;
 			break;
 		case PO_S:
-			p.y++;
+			p.x -= x;
+			p.y += y;
 			break;
 		case PO_W:
-			p.x--;
+			p.x -= y;
+			p.y -= x;
 			break;
 		case PO_E:
-			p.x++;
+			p.x += y;
+			p.y += x;
 			break;
 		case PO_SIZE:
 			break;
 	}
-	return p;
-}
-
-Position Position_RelativeTo(Position *pos, int x, int y) {
-	Position p = *pos;
-	p.x += x;
-	p.y += y;
 	return p;
 }
 

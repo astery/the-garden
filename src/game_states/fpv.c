@@ -58,14 +58,14 @@ void FPVGS_HandleInput(Game *game, SDL_Event *e) {
 
 #pragma GCC diagnostic pop
 
-void FPVGS_RenderSideWall(Game *game, Position pos, int dist, SDL_Renderer *renderer, SDL_RendererFlip flip) {
+void FPVGS_RenderSideWall(Game *game, Position side_pos, int dist, Orientation orient, SDL_Renderer *renderer, SDL_RendererFlip flip) {
 	int i = dist;
 
 	for (; i>=0; i--) {
 		switch(i) {
 		case 3:
-			if (Map_IsWallAtPos(game->current_map, Position_RelativeTo(&pos, 0, -2))) {
-				if (dist != 3 && Map_IsWallAtPos(game->current_map, Position_RelativeTo(&pos, 0, -3)))
+			if (Map_IsWallAtPos(game->current_map, Position_RelativeTo(&side_pos, 0, 2, orient))) {
+				if (dist != 3 && Map_IsWallAtPos(game->current_map, Position_RelativeTo(&side_pos, 0, 3, orient)))
 					SDL_RenderCopyEx(renderer, img_side_3_opened.texture, NULL, NULL, 0, NULL, flip);
 				else
 					SDL_RenderCopyEx(renderer, img_side_3.texture, NULL, NULL, 0, NULL, flip);
@@ -77,8 +77,8 @@ void FPVGS_RenderSideWall(Game *game, Position pos, int dist, SDL_Renderer *rend
 			}
 			break;
 		case 2:
-			if (Map_IsWallAtPos(game->current_map, Position_RelativeTo(&pos, 0, -1))) {
-				if (dist != 2 && Map_IsWallAtPos(game->current_map, Position_RelativeTo(&pos, 0, -2)))
+			if (Map_IsWallAtPos(game->current_map, Position_RelativeTo(&side_pos, 0, 1, orient))) {
+				if (dist != 2 && Map_IsWallAtPos(game->current_map, Position_RelativeTo(&side_pos, 0, 2, orient)))
 					SDL_RenderCopyEx(renderer, img_side_2_opened.texture, NULL, NULL, 0, NULL, flip);
 				else
 					SDL_RenderCopyEx(renderer, img_side_2.texture, NULL, NULL, 0, NULL, flip);
@@ -90,8 +90,8 @@ void FPVGS_RenderSideWall(Game *game, Position pos, int dist, SDL_Renderer *rend
 			}
 			break;
 		case 1:
-			if (Map_IsWallAtPos(game->current_map, Position_RelativeTo(&pos, 0, 0))) {
-				if (dist != 1 && Map_IsWallAtPos(game->current_map, Position_RelativeTo(&pos, 0, -1))) {
+			if (Map_IsWallAtPos(game->current_map, Position_RelativeTo(&side_pos, 0, 0, orient))) {
+				if (dist != 1 && Map_IsWallAtPos(game->current_map, Position_RelativeTo(&side_pos, 0, 1, orient))) {
 					SDL_RenderCopyEx(renderer, img_side_0_opened.texture, NULL, NULL, 0, NULL, flip);
 				}
 				else {
@@ -112,9 +112,9 @@ void FPVGS_RenderSideWall(Game *game, Position pos, int dist, SDL_Renderer *rend
 
 void FPVGS_Render(Game *game, SDL_Renderer *renderer) {
 	SDL_RenderCopyEx(renderer, img_fpv_bground.texture, NULL, NULL, 0, NULL, SDL_FLIP_NONE);
-	Position *pos = &game->player.tile->pos;
+	Position *player_pos = &game->player.tile->pos;
 
-	int dist = Map_GetFrontWallDistance(game->current_map, pos, game->player.orient);
+	int dist = Map_GetFrontWallDistance(game->current_map, player_pos, game->player.orient);
 
 	switch(dist) {
 	case 1:
@@ -127,8 +127,6 @@ void FPVGS_Render(Game *game, SDL_Renderer *renderer) {
 		SDL_RenderCopyEx(renderer, img_front_3.texture, NULL, NULL, 0, NULL, SDL_FLIP_NONE);
 		break;
 	}
-	FPVGS_RenderSideWall(game, Position_RelativeTo(pos, -1, 0), dist, renderer, SDL_FLIP_NONE);
-	FPVGS_RenderSideWall(game, Position_RelativeTo(pos, 1, 0), dist, renderer, SDL_FLIP_HORIZONTAL);
-//	SDL_RenderCopyEx(renderer, img_front_3.texture, NULL, NULL, 0, NULL, SDL_FLIP_NONE);
-//	SDL_RenderCopyEx(renderer, img_side_3_opened.texture, NULL, NULL, 0, NULL, SDL_FLIP_HORIZONTAL);
+	FPVGS_RenderSideWall(game, Position_RelativeTo(player_pos, -1, 0, game->player.orient), dist, game->player.orient, renderer, SDL_FLIP_NONE);
+	FPVGS_RenderSideWall(game, Position_RelativeTo(player_pos, 1, 0, game->player.orient), dist, game->player.orient, renderer, SDL_FLIP_HORIZONTAL);
 }

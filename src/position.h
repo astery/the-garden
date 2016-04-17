@@ -17,7 +17,7 @@ struct Position {
 };
 
 Position Position_NextToOrientation(Position *pos, Orientation orient);
-Position Position_RelativeTo(Position *pos, int x, int y);
+Position Position_RelativeTo(Position *pos, int x, int y, Orientation orient);
 bool Position_IsInMapBoundaries(Position *pos, Map *map);
 
 #endif /* POSITION_H_ */
