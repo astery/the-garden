@@ -16,6 +16,7 @@
 #include "assets.h"
 #include "game.h"
 #include "game_states/menu.h"
+#include "sounds.h"
 
 int main(int argc, char* argv[])
 {
@@ -31,6 +32,7 @@ int main(int argc, char* argv[])
 
 	Game game;
 	Game_Init(&game);
+	SND_PlayMusic();
 
 	Application_RunLoop(&app, &game);
 	Application_Destroy(&app);
