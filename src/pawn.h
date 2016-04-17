@@ -23,6 +23,7 @@ typedef struct {
 	Tile *tile;
 	Orientation orient;
 	int health;
+	int gold;
 	int atk;
 	int def;
 } Pawn;

@@ -33,6 +33,9 @@ Image img_arrow_left_2;
 Image img_arrow_right_1;
 Image img_arrow_right_2;
 
+Image img_tutor_a;
+Image img_tutor_d;
+
 Image img_stat_hp;
 Image img_stat_lv;
 Image img_stat_df;
