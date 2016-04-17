@@ -6,6 +6,7 @@
  */
 
 #include "map.h"
+#include "fight.h"
 
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wswitch"
@@ -55,6 +56,10 @@ void MapGS_HandleInput(Game *game, SDL_Event *e) {
 
 #pragma GCC diagnostic pop
 
-void MapGS_Render(Game *game, SDL_Renderer *render) {
-	Map_Render(game->current_map, render);
+void MapGS_Render(Game *game, SDL_Renderer *renderer) {
+	Map_Render(game->current_map, renderer);
+
+	if (Game_IsMonsterNearPlayer(game) || game->defeat_enemy_on_this_step) {
+		FightGS_RenderHUD(game, renderer);
+	}
 }

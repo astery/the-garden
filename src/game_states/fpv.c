@@ -8,11 +8,13 @@
 #include "fpv.h"
 #include "../orientation.h"
 #include "../colors.h"
+#include "fight.h"
 
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wswitch"
 
 void FPVGS_RenderEnvironment(Game *game, SDL_Renderer *renderer);
+void FPVGS_RenderItems(Game *game, SDL_Renderer *renderer);
 
 void FPVGS_HandleInput(Game *game, SDL_Event *e) {
 	Orientation player_o = game->player.orient;
@@ -63,7 +65,15 @@ void FPVGS_HandleInput(Game *game, SDL_Event *e) {
 
 void FPVGS_Render(Game *game, SDL_Renderer *renderer) {
 	FPVGS_RenderEnvironment(game, renderer);
+	FPVGS_RenderItems(game, renderer);
 
+
+	if (Game_IsMonsterNearPlayer(game) || game->defeat_enemy_on_this_step) {
+		FightGS_RenderHUD(game, renderer);
+	}
+}
+
+void FPVGS_RenderItems(Game *game, SDL_Renderer *renderer) {
 	Pawn *p = &game->player;
 	TileItem *item;
 

@@ -9,6 +9,7 @@
 #define GAME_H_
 
 #include "game_typedefs.h"
+#include <stdbool.h>
 #include "game_state.h"
 #include "map.h"
 #include "assets.h"
@@ -23,6 +24,8 @@ struct Game {
 
 	GameStateName prev_state;
 	Pawn *last_monster;
+	bool show_hud;
+	bool defeat_enemy_on_this_step;
 };
 
 void Game_Init(Game *game);
@@ -33,6 +36,7 @@ void Game_MovePawn(Game *game, Pawn *pawn, Orientation orient);
 void Game_MovePlayer(Game *game, Orientation orient);
 void Game_ResetPlayer(Game *game);
 void Game_PawnHitPawn(Game *game, Pawn *att, Pawn *rec);
+bool Game_IsMonsterNearPlayer(Game *game);
 
 
 #endif /* GAME_H_ */

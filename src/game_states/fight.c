@@ -38,21 +38,19 @@ void FightGS_RenderHUD(Game *game, SDL_Renderer *renderer) {
 	int h = AHEIGHT - 1;
 	int prop;
 	SDL_Color *c;
-
-	prop = game->player.def;
-	c = &color_light_gray;
-	SDL_SetRenderDrawColor(renderer, c->r, c->g, c->b, 0xFF);
-	SDL_RenderDrawLine(renderer, 0, h - prop, 0, h);
-
-	prop = game->player.atk;
-	c = &color_white;
-	SDL_SetRenderDrawColor(renderer, c->r, c->g, c->b, 0xFF);
-	SDL_RenderDrawLine(renderer, w, h - prop, w, h);
+	c = &color_red;
 
 	prop = game->player.health;
-	c = &color_red;
-	SDL_SetRenderDrawColor(renderer, c->r, c->g, c->b, 0xFF);
-	SDL_RenderDrawLine(renderer, w/2 - prop/2, h, w/2 + prop/2, h);
+	if (prop > 0) {
+		SDL_SetRenderDrawColor(renderer, c->r, c->g, c->b, 0xFF);
+		SDL_RenderDrawLine(renderer, 0, h, 0, h + 1 - prop);
+	}
+
+	prop = game->last_monster->health;
+	if (prop > 0) {
+		SDL_SetRenderDrawColor(renderer, c->r, c->g, c->b, 0xFF);
+		SDL_RenderDrawLine(renderer, w, h, w, h + 1 - prop);
+	}
 }
 
 void FightGS_RenderStats(FightGS_Stats stat, Game *game, SDL_Renderer *renderer) {

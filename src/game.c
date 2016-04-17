@@ -17,6 +17,8 @@ void Game_Init(Game *game) {
 
 void Game_Reset(Game *game) {
 	game->state = NULL;
+	game->show_hud = false;
+	game->defeat_enemy_on_this_step = false;
 	LoadMaps(game->maps);
 	Game_SetCurrentMap(game, 0);
 	Game_SetCurrentState(game, GS_MENU);
@@ -25,8 +27,8 @@ void Game_Reset(Game *game) {
 
 void Game_ResetPlayer(Game *game) {
 	game->player.health = 3;
-	game->player.atk = 2;
-	game->player.def = 1;
+	game->player.atk = 1;
+	game->player.def = 0;
 }
 
 void Game_UpdatePlayerReference(Game *game) {
@@ -109,8 +111,6 @@ bool Game_IfPlayerStepOnMonsterGoFight(Game *game, Orientation orient) {
 			Game_PawnHitPawn(game, m, p);
 		}
 
-		Game_SetCurrentState(game, GS_FIGHT);
-
 		return true;
 	}
 	return false;
@@ -122,6 +122,7 @@ void Game_MovePlayer(Game *game, Orientation orient) {
 		return;
 	}
 	Game_MovePawn(game, &game->player, orient);
+	game->defeat_enemy_on_this_step = false;
 }
 
 void Game_PawnHitPawn(Game *game, Pawn *att, Pawn *rec) {
@@ -131,4 +132,21 @@ void Game_PawnHitPawn(Game *game, Pawn *att, Pawn *rec) {
 	int health = rec->health - hit;
 	health = health < 0 ? 0 : health;
 	rec->health = health;
+
+	if (health <= 0) {
+		game->defeat_enemy_on_this_step = true;
+	}
+}
+
+bool Game_IsMonsterNearPlayer(Game *game) {
+	int i = PO_N;
+	for (; i < PO_SIZE; i++) {
+		Position pos = Position_NextToOrientation(&game->player.tile->pos, i);
+		TileItem *item = Map_GetTopItemAtPos(game->current_map, pos);
+		if (item->type == MONSTER && item->pawn->health > 0) {
+			game->last_monster = item->pawn;
+			return true;
+		}
+	}
+	return false;
 }
