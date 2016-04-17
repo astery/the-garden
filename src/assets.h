@@ -33,6 +33,13 @@ Image img_arrow_left_2;
 Image img_arrow_right_1;
 Image img_arrow_right_2;
 
+Image img_stat_hp;
+Image img_stat_lv;
+Image img_stat_df;
+Image img_stat_op;
+Image img_stat_at;
+Image img_stat_gd;
+
 Image img_fpv_bground;
 Image img_front_1;
 Image img_front_2;
@@ -54,10 +61,16 @@ Image img_door_4;
 
 Image img_knight_1_attack;
 Image img_knight_1_idle;
+Image img_knight_1_idle_2;
 Image img_knight_1_down;
+Image img_knight_2_down;
+Image img_knight_3_down;
 Image img_knight_1_defend;
 Image img_knight_2;
 Image img_knight_3;
+Image img_knight_4;
+
+Animation anim_knight_idle;
 
 Animation anim_arrow_down;
 Animation anim_arrow_up;
