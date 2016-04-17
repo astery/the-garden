@@ -41,6 +41,13 @@ int AssetsLoad(SDL_Renderer *render) {
 	IMG_INIT(IMG_FPV_PATH, &img_door_3, "door-3.png");
 	IMG_INIT(IMG_FPV_PATH, &img_door_4, "door-4.png");
 
+	IMG_INIT(IMG_FPV_PATH, &img_knight_1_attack, "knight-1-attack.png");
+	IMG_INIT(IMG_FPV_PATH, &img_knight_1_idle, "knight-1-idle.png");
+	IMG_INIT(IMG_FPV_PATH, &img_knight_1_down, "knight-1-down.png");
+	IMG_INIT(IMG_FPV_PATH, &img_knight_1_defend, "knight-1-defend.png");
+	IMG_INIT(IMG_FPV_PATH, &img_knight_2, "knight-2.png");
+	IMG_INIT(IMG_FPV_PATH, &img_knight_3, "knight-3.png");
+
 	anim_arrow_down = (Animation) {
 		.steps_count = 2,
 		.steps = {

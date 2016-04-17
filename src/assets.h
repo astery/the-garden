@@ -52,6 +52,13 @@ Image img_door_2;
 Image img_door_3;
 Image img_door_4;
 
+Image img_knight_1_attack;
+Image img_knight_1_idle;
+Image img_knight_1_down;
+Image img_knight_1_defend;
+Image img_knight_2;
+Image img_knight_3;
+
 Animation anim_arrow_down;
 Animation anim_arrow_up;
 Animation anim_arrow_left;
