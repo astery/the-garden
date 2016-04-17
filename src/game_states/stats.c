@@ -22,8 +22,7 @@ void StatsGS_OnLeave(Game *game, GameState *from_state) {
 
 void StatsGS_HandleInput(Game *game, SDL_Event *e) {
    if (e->type == SDL_KEYDOWN) {
-//		if (e->key.keysym.sym == SDLK_a)
-			Game_SetCurrentState(game, GS_FPV);
+		Game_SetCurrentState(game, GS_FPV);
    }
 }
 
@@ -35,22 +34,22 @@ void StatsGS_RenderStats(Game *game, SDL_Renderer *renderer) {
 	prop = game->player.health;
 	c = &color_light_red;
 	SDL_SetRenderDrawColor(renderer, c->r, c->g, c->b, 0xFF);
-	SDL_RenderDrawLine(renderer, 0, h, 0, h-(h-prop));
+	SDL_RenderDrawLine(renderer, 0, h, 0, h + 1 - prop);
 
 	prop = game->player.def;
 	c = &color_green;
 	SDL_SetRenderDrawColor(renderer, c->r, c->g, c->b, 0xFF);
-	SDL_RenderDrawLine(renderer, 2, h, 2, h-(h-prop));
+	SDL_RenderDrawLine(renderer, 2, h, 2, h + 1 - prop);
 
 	prop = game->player.atk;
 	c = &color_light_gray;
 	SDL_SetRenderDrawColor(renderer, c->r, c->g, c->b, 0xFF);
-	SDL_RenderDrawLine(renderer, 4, h, 4, h-(h-prop));
+	SDL_RenderDrawLine(renderer, 4, h, 4, h + 1 - prop);
 
 	prop = game->player.gold;
 	c = &color_gold;
 	SDL_SetRenderDrawColor(renderer, c->r, c->g, c->b, 0xFF);
-	SDL_RenderDrawLine(renderer, 6, h, 6, h-(h-prop));
+	SDL_RenderDrawLine(renderer, 6, h, 6, h + 1 - prop);
 }
 
 
