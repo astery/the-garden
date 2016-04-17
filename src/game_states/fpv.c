@@ -7,6 +7,7 @@
 
 #include "fpv.h"
 #include "../orientation.h"
+#include "../colors.h"
 
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wswitch"
@@ -141,6 +142,17 @@ void FPVGS_RenderFrontWall(Game *game, SDL_Renderer *renderer, int dist) {
 	}
 }
 
+void FPVGS_RenderSun(Game *game, SDL_Renderer *renderer) {
+	Orientation o = game->player.orient;
+
+	if (o == PO_N) {
+		SDL_Color *c;
+		c = &color_yellow;
+		SDL_SetRenderDrawColor(renderer, c->r, c->g, c->b, 0xFF);
+		SDL_RenderDrawLine(renderer, 2, 0, 3, 0);
+	}
+}
+
 void FPVGS_RenderEnvironment(Game *game, SDL_Renderer *renderer) {
 	Position *player_pos = &game->player.tile->pos;
 
@@ -148,6 +160,7 @@ void FPVGS_RenderEnvironment(Game *game, SDL_Renderer *renderer) {
 
 	SDL_RenderCopyEx(renderer, img_fpv_bground.texture, NULL, NULL, 0, NULL, SDL_FLIP_NONE);
 
+	FPVGS_RenderSun(game, renderer);
 	FPVGS_RenderFrontWall(game, renderer, dist);
 	FPVGS_RenderSideWall(game, Position_RelativeTo(player_pos, -1, 0, game->player.orient), dist, game->player.orient, renderer, SDL_FLIP_NONE);
 	FPVGS_RenderSideWall(game, Position_RelativeTo(player_pos, 1, 0, game->player.orient), dist, game->player.orient, renderer, SDL_FLIP_HORIZONTAL);

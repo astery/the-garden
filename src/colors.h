@@ -18,5 +18,6 @@ SDL_Color color_green;
 SDL_Color color_dark_grey;
 SDL_Color color_gold;
 SDL_Color color_pink;
+SDL_Color color_yellow;
 
 #endif /* COLORS_H_ */
