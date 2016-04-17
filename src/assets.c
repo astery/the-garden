@@ -34,6 +34,7 @@ int AssetsLoad(SDL_Renderer *render) {
 	IMG_INIT(IMG_FPV_PATH, &img_side_1_opened, "side-1-opened.png");
 	IMG_INIT(IMG_FPV_PATH, &img_side_2_opened, "side-2-opened.png");
 	IMG_INIT(IMG_FPV_PATH, &img_side_3_opened, "side-3-opened.png");
+	IMG_INIT(IMG_FPV_PATH, &img_side_0_pixel, "side-0-pixel.png");
 
 
 	anim_arrow_down = (Animation) {

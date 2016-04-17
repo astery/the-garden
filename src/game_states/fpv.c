@@ -93,8 +93,9 @@ void FPVGS_RenderSideWall(Game *game, Position side_pos, int dist, Orientation o
 			if (Map_IsWallAtPos(game->current_map, Position_RelativeTo(&side_pos, 0, 0, orient))) {
 				if (dist != 1 && Map_IsWallAtPos(game->current_map, Position_RelativeTo(&side_pos, 0, 1, orient))) {
 					SDL_RenderCopyEx(renderer, img_side_0_opened.texture, NULL, NULL, 0, NULL, flip);
-				}
-				else {
+				} else if (dist == 1 && Map_IsWallAtPos(game->current_map, Position_RelativeTo(&side_pos, 0, 1, orient))) {
+					SDL_RenderCopyEx(renderer, img_side_0_pixel.texture, NULL, NULL, 0, NULL, flip);
+				} else {
 					SDL_RenderCopyEx(renderer, img_side_0.texture, NULL, NULL, 0, NULL, flip);
 				}
 			} else {

@@ -45,6 +45,7 @@ Image img_side_0_opened;
 Image img_side_1_opened;
 Image img_side_2_opened;
 Image img_side_3_opened;
+Image img_side_0_pixel;
 
 Animation anim_arrow_down;
 Animation anim_arrow_up;
