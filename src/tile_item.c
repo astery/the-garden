@@ -45,7 +45,36 @@ void TileItem_RenderFPV(TileItem *item, SDL_Renderer *renderer, int dist) {
 		break;
 	case PLAYER:
 		break;
-	case MONSTER:
+	case MONSTER: ;
+		Pawn *m = item->pawn;
+		if (m->health <= 0) {
+			switch(dist) {
+			case 3:
+				SDL_RenderCopy(renderer, img_knight_3_down.texture, NULL, NULL);
+				break;
+			case 2:
+				SDL_RenderCopy(renderer, img_knight_2_down.texture, NULL, NULL);
+				break;
+			case 1:
+				SDL_RenderCopy(renderer, img_knight_1_down.texture, NULL, NULL);
+				break;
+			}
+		} else {
+			switch(dist) {
+			case 4:
+				SDL_RenderCopy(renderer, img_knight_4.texture, NULL, NULL);
+				break;
+			case 3:
+				SDL_RenderCopy(renderer, img_knight_3.texture, NULL, NULL);
+				break;
+			case 2:
+				SDL_RenderCopy(renderer, img_knight_2.texture, NULL, NULL);
+				break;
+			case 1:
+				Animation_Render(&anim_knight_idle, renderer, 0, 0);
+				break;
+			}
+		}
 		break;
 	case EXIT:
 		switch(dist) {

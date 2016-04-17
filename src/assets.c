@@ -163,7 +163,7 @@ void LoadMap2(Map *map) {
 	};
 	Map_AppendFromItemTypeArray(map, m);
 	Pawn_Init(&map2_pawns[0], &map->tiles[2][4], NULL);
-	Pawn_Init(&map2_pawns[1], &map->tiles[4][4], NULL);
+	Pawn_Init(&map2_pawns[1], &map->tiles[3][2], NULL);
 }
 
 void LoadMaps(Map maps_dest[GAME_MAPS_COUNT]) {
