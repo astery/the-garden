@@ -19,6 +19,7 @@
 
 struct Map {
 	Tile tiles[MAP_SIZE][MAP_SIZE];
+	TileItem border;
 };
 
 struct MapSlice {

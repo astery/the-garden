@@ -78,7 +78,7 @@ void Game_MovePawn(Game *game, Pawn *pawn, Orientation orient) {
 		return;
 	}
 
-	TileItem *item = Map_GetTopItemAt(game->current_map, p.x, p.y);
+	TileItem *item = Map_GetTopItemAtPos(game->current_map, p);
 	if (item == NULL) {
 		return;
 	}
@@ -95,7 +95,7 @@ void Game_MovePawn(Game *game, Pawn *pawn, Orientation orient) {
 bool Game_IfPlayerStepOnMonsterGoFight(Game *game, Orientation orient) {
 
 	Position pos = Pawn_PeekMove(&game->player, orient);
-	TileItem *item = Map_GetTopItemAt(game->current_map, pos.x, pos.y);
+	TileItem *item = Map_GetTopItemAtPos(game->current_map, pos);
 
 	if (item->type == MONSTER) {
 		game->last_monster = item->pawn;
