@@ -13,6 +13,7 @@
 typedef struct GameState GameState;
 typedef struct Game Game;
 typedef enum GameStateName GameStateName;
+typedef enum FightGS_Stats FightGS_Stats;
 
 typedef void (*GameStateInputHandler)(Game *game, SDL_Event *e);
 typedef void (*GameStateRenderer)(Game *game, SDL_Renderer *renderer);

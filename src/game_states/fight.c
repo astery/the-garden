@@ -53,6 +53,23 @@ void FightGS_RenderHUD(Game *game, SDL_Renderer *renderer) {
 	SDL_RenderDrawLine(renderer, w/2 - prop/2, h, w/2 + prop/2, h);
 }
 
+void FightGS_RenderStats(FightGS_Stats stat, Game *game, SDL_Renderer *renderer) {
+	int w = AWIDTH - 1;
+	int h = AHEIGHT - 1;
+	int prop;
+	SDL_Color *c;
+
+	switch (stat) {
+	case ST_HP:
+		c = &color_light_red;
+		prop = game->player.health;
+		SDL_RenderCopy(renderer, img_stat_hp.texture, NULL, NULL);
+		SDL_SetRenderDrawColor(renderer, c->r, c->g, c->b, 0xFF);
+		SDL_RenderDrawLine(renderer, 1, h, 1+prop, h);
+		break;
+	}
+}
+
 void FightGS_Render(Game *game, SDL_Renderer *renderer) {
-	FightGS_RenderHUD(game, renderer);
+	FightGS_RenderStats(ST_HP, game, renderer);
 }

@@ -12,6 +12,14 @@
 
 int AssetsLoad(SDL_Renderer *render) {
 	int ret;
+
+	IMG_INIT(IMG_FPV_PATH, &img_stat_hp, "stat-hp.png");
+	IMG_INIT(IMG_FPV_PATH, &img_stat_lv, "stat-lv.png");
+	IMG_INIT(IMG_FPV_PATH, &img_stat_df, "stat-df.png");
+	IMG_INIT(IMG_FPV_PATH, &img_stat_op, "stat-op.png");
+	IMG_INIT(IMG_FPV_PATH, &img_stat_at, "stat-at.png");
+	IMG_INIT(IMG_FPV_PATH, &img_stat_gd, "stat-gd.png");
+
 	IMG_INIT(IMG_SCREENS_PATH, &img_menu, "start_screen.png");
 	IMG_INIT(IMG_SCREENS_PATH, &img_arrow_down_1, "arrow_down_1.png");
 	IMG_INIT(IMG_SCREENS_PATH, &img_arrow_down_2, "arrow_down_2.png");
@@ -40,6 +48,27 @@ int AssetsLoad(SDL_Renderer *render) {
 	IMG_INIT(IMG_FPV_PATH, &img_door_2, "door-2.png");
 	IMG_INIT(IMG_FPV_PATH, &img_door_3, "door-3.png");
 	IMG_INIT(IMG_FPV_PATH, &img_door_4, "door-4.png");
+
+	IMG_INIT(IMG_FPV_PATH, &img_knight_1_attack, "bknight-1-attack.png");
+	IMG_INIT(IMG_FPV_PATH, &img_knight_1_idle, "bknight-1-idle.png");
+	IMG_INIT(IMG_FPV_PATH, &img_knight_1_idle_2, "bknight-1-idle-2.png");
+	IMG_INIT(IMG_FPV_PATH, &img_knight_1_down, "bknight-1-down.png");
+	IMG_INIT(IMG_FPV_PATH, &img_knight_2_down, "bknight-2-down.png");
+	IMG_INIT(IMG_FPV_PATH, &img_knight_3_down, "bknight-3-down.png");
+	IMG_INIT(IMG_FPV_PATH, &img_knight_1_defend, "bknight-1-defend.png");
+	IMG_INIT(IMG_FPV_PATH, &img_knight_2, "bknight-2.png");
+	IMG_INIT(IMG_FPV_PATH, &img_knight_3, "bknight-3.png");
+	IMG_INIT(IMG_FPV_PATH, &img_knight_4, "bknight-4.png");
+
+	anim_knight_idle = (Animation) {
+		.steps_count = 2,
+		.steps = {
+			&img_knight_1_idle,
+			&img_knight_1_idle_2
+		},
+		.width = 7,
+		.height = 7
+	};
 
 	anim_arrow_down = (Animation) {
 		.steps_count = 2,
