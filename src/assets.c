@@ -134,13 +134,13 @@ int AssetsLoad(SDL_Renderer *render) {
 #define E EXIT
 
 Pawn map1_pawns[] = {
-		{ .type = PT_PLAYER, .health = 1, .atk = 1, .def = 0 },
-		{ .type = PT_MONSTER, .health = 1, .atk = 1, .def = 0 }
+		{ .type = PT_PLAYER, .health = 3, .atk = 1, .def = 0 },
+		{ .type = PT_MONSTER, .health = 2, .atk = 1, .def = 0 }
 };
 
 Pawn map2_pawns[] = {
-		{ .type = PT_PLAYER, .health = 1, .atk = 1, .def = 0 },
-		{ .type = PT_MONSTER, .health = 1, .atk = 1, .def = 0 }
+		{ .type = PT_PLAYER, .health = 3, .atk = 1, .def = 0 },
+		{ .type = PT_MONSTER, .health = 2, .atk = 1, .def = 0 }
 };
 
 void LoadMap1(Map *map) {

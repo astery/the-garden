@@ -90,19 +90,31 @@ void Game_MovePawn(Game *game, Pawn *pawn, Orientation orient) {
 }
 
 bool Game_IfPlayerStepOnMonsterGoFight(Game *game, Orientation orient) {
-   Position pos = Pawn_PeekMove(&game->player, orient);
-   TileItem *item = Map_GetTopItemAt(game->current_map, pos.x, pos.y);
 
-   if (item->type == MONSTER) {
-	   Game_SetCurrentState(game, GS_FIGHT);
-	   game->last_monster = item->pawn;
+	Position pos = Pawn_PeekMove(&game->player, orient);
+	TileItem *item = Map_GetTopItemAt(game->current_map, pos.x, pos.y);
 
-	   return true;
-   }
+	if (item->type == MONSTER) {
+		game->last_monster = item->pawn;
 
-   return false;
+		Pawn *m = game->last_monster;
+		Pawn *p = &game->player;
+
+		if (m->health <= 0) {
+			return false;
+		}
+
+		Game_PawnHitPawn(game, p, m);
+		if (m->health > 0) {
+			Game_PawnHitPawn(game, m, p);
+		}
+
+		Game_SetCurrentState(game, GS_FIGHT);
+
+		return true;
+	}
+	return false;
 }
-
 
 void Game_MovePlayer(Game *game, Orientation orient) {
 	if (Game_IfPlayerStepOnMonsterGoFight(game, orient)) {
@@ -110,4 +122,13 @@ void Game_MovePlayer(Game *game, Orientation orient) {
 		return;
 	}
 	Game_MovePawn(game, &game->player, orient);
+}
+
+void Game_PawnHitPawn(Game *game, Pawn *att, Pawn *rec) {
+	int hit = att->atk - rec->def;
+	hit = hit < 0 ? 0 : hit;
+
+	int health = rec->health - hit;
+	health = health < 0 ? 0 : health;
+	rec->health = health;
 }

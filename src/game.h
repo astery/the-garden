@@ -32,6 +32,7 @@ void Game_SetCurrentState(Game *game, GameStateName state_name);
 void Game_MovePawn(Game *game, Pawn *pawn, Orientation orient);
 void Game_MovePlayer(Game *game, Orientation orient);
 void Game_ResetPlayer(Game *game);
+void Game_PawnHitPawn(Game *game, Pawn *att, Pawn *rec);
 
 
 #endif /* GAME_H_ */

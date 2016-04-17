@@ -21,6 +21,7 @@ enum FightGS_Stats {
 
 void FightGS_HandleInput(Game *game, SDL_Event *e);
 void FightGS_Render(Game *game, SDL_Renderer *render);
-void FightGS_RenderStats(FightGS_Stats stat, Game *game, SDL_Renderer *renderer);
+void FightGS_OnEnter(Game *game, GameState *from_state);
+void FightGS_OnLeave(Game *game, GameState *from_state);
 
 #endif /* GAME_STATES_FIGHT_H_ */
