@@ -167,6 +167,9 @@ int AssetsLoad(SDL_Renderer *render) {
 
 	LoadMap1(&maps[0]);
 	LoadMap2(&maps[1]);
+	LoadMap3(&maps[2]);
+	LoadMap4(&maps[3]);
+	LoadMap5(&maps[4]);
 
 	return ret;
 }
@@ -184,6 +187,39 @@ Pawn map1_pawns[] = {
 
 Pawn map2_pawns[] = {
 		{ .type = PT_PLAYER, .health = 3, .atk = 1, .def = 0 },
+		{ .type = PT_MONSTER, .health = 2, .atk = 1, .def = 0, .gold = 1 },
+		{ .type = PT_MONSTER, .health = 2, .atk = 1, .def = 0, .gold = 1 },
+		{ .type = PT_MONSTER, .health = 2, .atk = 1, .def = 0, .gold = 1 }
+};
+
+Pawn map3_pawns[] = {
+		{ .type = PT_PLAYER, .health = 3, .atk = 1, .def = 0 },
+		{ .type = PT_MONSTER, .health = 2, .atk = 1, .def = 0, .gold = 1 },
+		{ .type = PT_MONSTER, .health = 2, .atk = 1, .def = 0, .gold = 1 },
+		{ .type = PT_MONSTER, .health = 2, .atk = 1, .def = 0, .gold = 1 },
+		{ .type = PT_MONSTER, .health = 2, .atk = 1, .def = 0, .gold = 1 }
+};
+
+Pawn map4_pawns[] = {
+		{ .type = PT_PLAYER, .health = 3, .atk = 1, .def = 0 },
+		{ .type = PT_MONSTER, .health = 2, .atk = 1, .def = 0, .gold = 1 },
+		{ .type = PT_MONSTER, .health = 2, .atk = 1, .def = 0, .gold = 1 },
+		{ .type = PT_MONSTER, .health = 2, .atk = 1, .def = 0, .gold = 1 },
+		{ .type = PT_MONSTER, .health = 2, .atk = 1, .def = 0, .gold = 1 },
+		{ .type = PT_MONSTER, .health = 2, .atk = 1, .def = 0, .gold = 1 },
+		{ .type = PT_MONSTER, .health = 2, .atk = 1, .def = 0, .gold = 1 },
+		{ .type = PT_MONSTER, .health = 2, .atk = 1, .def = 0, .gold = 1 },
+		{ .type = PT_MONSTER, .health = 2, .atk = 1, .def = 0, .gold = 1 },
+		{ .type = PT_MONSTER, .health = 2, .atk = 1, .def = 0, .gold = 1 },
+		{ .type = PT_MONSTER, .health = 2, .atk = 1, .def = 0, .gold = 1 }
+};
+
+Pawn map5_pawns[] = {
+		{ .type = PT_PLAYER, .health = 3, .atk = 1, .def = 0 },
+		{ .type = PT_MONSTER, .health = 2, .atk = 1, .def = 0, .gold = 1 },
+		{ .type = PT_MONSTER, .health = 2, .atk = 1, .def = 0, .gold = 1 },
+		{ .type = PT_MONSTER, .health = 2, .atk = 1, .def = 0, .gold = 1 },
+		{ .type = PT_MONSTER, .health = 2, .atk = 1, .def = 0, .gold = 1 },
 		{ .type = PT_MONSTER, .health = 2, .atk = 1, .def = 0, .gold = 1 }
 };
 
@@ -192,17 +228,17 @@ void LoadMap1(Map *map) {
 	MapSlice m;
 	m = (MapSlice) {
 		.tiles[0] =
-			{ N, W, M, W, N, N, N },
-			{ N, W, N, W, W, W, N },
-			{ N, W, N, N, N, W, N },
-			{ N, W, N, W, N, W, N },
-			{ N, W, P, W, E, W, N },
-			{ N, W, W, W, W, W, N },
-			{ N, N, N, N, N, N, N },
+			{ W, W, W, W, W, W, W },
+			{ W, N, N, N, M, N, W },
+			{ W, N, W, W, W, N, W },
+			{ W, N, W, W, W, N, W },
+			{ W, N, W, E, N, N, W },
+			{ W, P, W, W, W, W, W },
+			{ W, W, W, W, W, W, W },
 	};
 	Map_AppendFromItemTypeArray(map, m);
-	Pawn_Init(&map1_pawns[0], &map->tiles[2][4], NULL);
-	Pawn_Init(&map1_pawns[1], &map->tiles[2][0], NULL);
+	Pawn_Init(&map1_pawns[0], &map->tiles[4][1], NULL);
+	Pawn_Init(&map1_pawns[1], &map->tiles[3][4], NULL);
 }
 
 void LoadMap2(Map *map) {
@@ -210,17 +246,89 @@ void LoadMap2(Map *map) {
 	MapSlice m;
 	m = (MapSlice) {
 		.tiles[0] =
-			{ N, N, N, N, N, N, N },
-			{ N, W, W, W, W, W, N },
-			{ N, W, N, M, N, W, N },
-			{ N, W, N, W, N, W, N },
-			{ N, W, P, W, E, W, N },
-			{ N, W, W, W, W, W, N },
-			{ N, N, N, N, N, N, N },
+			{ W, W, W, W, W, W, W },
+			{ W, N, N, M, N, M, W },
+			{ W, N, W, W, W, N, W },
+			{ W, N, N, M, W, N, W },
+			{ W, N, W, N, W, N, W },
+			{ W, P, W, N, E, N, W },
+			{ W, W, W, W, W, W, W },
 	};
 	Map_AppendFromItemTypeArray(map, m);
-	Pawn_Init(&map2_pawns[0], &map->tiles[2][4], NULL);
-	Pawn_Init(&map2_pawns[1], &map->tiles[3][2], NULL);
+	Pawn_Init(&map2_pawns[0], &map->tiles[3][1], NULL);
+	Pawn_Init(&map2_pawns[1], &map->tiles[5][1], NULL);
+	Pawn_Init(&map2_pawns[2], &map->tiles[3][3], NULL);
+	Pawn_Init(&map2_pawns[3], &map->tiles[4][5], NULL);
+}
+
+void LoadMap3(Map *map) {
+	Map_Init(map);
+	MapSlice m;
+	m = (MapSlice) {
+		.tiles[0] =
+			{ E, W, W, W, N, N, M },
+			{ N, W, M, N, N, W, N },
+			{ N, N, N, W, M, N, N },
+			{ W, W, W, W, N, W, N },
+			{ N, N, N, N, N, W, N },
+			{ N, W, N, W, W, W, N },
+			{ P, W, N, N, N, N, M },
+	};
+	Map_AppendFromItemTypeArray(map, m);
+	Pawn_Init(&map3_pawns[0], &map->tiles[6][0], NULL);
+	Pawn_Init(&map3_pawns[1], &map->tiles[2][1], NULL);
+	Pawn_Init(&map3_pawns[2], &map->tiles[4][2], NULL);
+	Pawn_Init(&map3_pawns[3], &map->tiles[6][6], NULL);
+	Pawn_Init(&map3_pawns[4], &map->tiles[0][0], NULL);
+}
+
+void LoadMap4(Map *map) {
+	Map_Init(map);
+	MapSlice m;
+	m = (MapSlice) {
+		.tiles[0] =
+			{ N, M, N, M, N, M, E },
+			{ N, W, N, W, N, W, N },
+			{ N, M, N, M, N, N, N },
+			{ N, W, N, W, N, W, M },
+			{ M, N, N, M, N, N, N },
+			{ N, W, N, W, N, W, M },
+			{ P, N, N, M, N, N, N },
+	};
+	Map_AppendFromItemTypeArray(map, m);
+	Pawn_Init(&map4_pawns[0], &map->tiles[1][0], NULL);
+	Pawn_Init(&map4_pawns[1], &map->tiles[3][0], NULL);
+	Pawn_Init(&map4_pawns[2], &map->tiles[5][0], NULL);
+	Pawn_Init(&map4_pawns[3], &map->tiles[1][2], NULL);
+	Pawn_Init(&map4_pawns[4], &map->tiles[3][2], NULL);
+	Pawn_Init(&map4_pawns[5], &map->tiles[6][3], NULL);
+	Pawn_Init(&map4_pawns[6], &map->tiles[0][4], NULL);
+	Pawn_Init(&map4_pawns[7], &map->tiles[3][4], NULL);
+	Pawn_Init(&map4_pawns[8], &map->tiles[6][5], NULL);
+	Pawn_Init(&map4_pawns[9], &map->tiles[3][6], NULL);
+	Pawn_Init(&map4_pawns[10], &map->tiles[6][6], NULL);
+}
+
+void LoadMap5(Map *map) {
+	Map_Init(map);
+	MapSlice m;
+	m = (MapSlice) {
+		.tiles[0] =
+			{ M, N, N, N, N, N, M },
+			{ N, W, W, W, W, W, N },
+			{ N, W, M, N, E, W, N },
+			{ N, W, N, W, W, W, N },
+			{ N, W, N, W, W, W, N },
+			{ N, W, M, N, N, N, M },
+			{ P, W, W, W, W, W, W },
+	};
+	Map_AppendFromItemTypeArray(map, m);
+	Pawn_Init(&map5_pawns[0], &map->tiles[0][0], NULL);
+	Pawn_Init(&map5_pawns[1], &map->tiles[6][0], NULL);
+	Pawn_Init(&map5_pawns[2], &map->tiles[6][5], NULL);
+	Pawn_Init(&map5_pawns[3], &map->tiles[2][5], NULL);
+	Pawn_Init(&map5_pawns[4], &map->tiles[2][2], NULL);
+	Pawn_Init(&map5_pawns[5], &map->tiles[4][2], NULL);
 }
 
 void LoadMaps(Map maps_dest[GAME_MAPS_COUNT]) {

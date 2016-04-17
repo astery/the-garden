@@ -38,7 +38,7 @@ void FightGS_RenderHUD(Game *game, SDL_Renderer *renderer) {
 	int h = AHEIGHT - 1;
 	int prop;
 	SDL_Color *c;
-	c = &color_red;
+	c = &color_light_red;
 
 	prop = game->player.health;
 	if (prop > 0) {

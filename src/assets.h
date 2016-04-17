@@ -101,12 +101,15 @@ Animation anim_arrow_up;
 Animation anim_arrow_left;
 Animation anim_arrow_right;
 
-#define GAME_MAPS_COUNT 3
+#define GAME_MAPS_COUNT 6
 Map maps[GAME_MAPS_COUNT];
 
 int AssetsLoad(SDL_Renderer *render);
 void LoadMaps(Map map[GAME_MAPS_COUNT]);
 void LoadMap1(Map *map);
 void LoadMap2(Map *map);
+void LoadMap3(Map *map);
+void LoadMap4(Map *map);
+void LoadMap5(Map *map);
 
 #endif /* ASSETS_H_ */
