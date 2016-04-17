@@ -6,36 +6,40 @@
  */
 
 #include "fpv.h"
+#include "../orientation.h"
 
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wswitch"
 
 void FPVGS_HandleInput(Game *game, SDL_Event *e) {
-	Orientation o = -1;
+	Orientation player_o = game->player.orient;
+	Orientation move_o = -1;
 	if (e->type == SDL_KEYDOWN) {
 		switch(e->key.keysym.scancode) {
 		case SDL_SCANCODE_DOWN:
-			o = PO_S;
+			move_o = Orientation_RotateLeft(Orientation_RotateLeft(player_o));
 			break;
 		case SDL_SCANCODE_LEFT:
-			o = PO_W;
+			player_o = Orientation_RotateLeft(player_o);
 			break;
 		case SDL_SCANCODE_RIGHT:
-			o = PO_E;
+			player_o = Orientation_RotateRight(player_o);
 			break;
 		case SDL_SCANCODE_UP:
-			o = PO_N;
+			move_o = player_o;
 			break;
 		}
 		switch(e->key.keysym.sym) {
-		case SDLK_r:
+		case SDLK_f:
 			Game_SetCurrentState(game, GS_MAP);
 			return;
 		}
 	}
 
-	if (o != -1) {
-		Position pos = Pawn_PeekMove(&game->player, o);
+	game->player.orient = player_o;
+
+	if (move_o != -1) {
+		Position pos = Pawn_PeekMove(&game->player, move_o);
 		TileItem *item = Map_GetTopItemAt(game->current_map, pos.x, pos.y);
 		switch (item->type) {
 		case EXIT: ;
@@ -47,7 +51,7 @@ void FPVGS_HandleInput(Game *game, SDL_Event *e) {
 			}
 			break;
 		default:
-			Game_MovePlayer(game, o);
+			Game_MovePlayer(game, move_o);
 		}
 	}
 }

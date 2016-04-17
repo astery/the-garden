@@ -9,10 +9,12 @@
 #define MAP_TYPEDEFS_H_
 
 typedef enum TileItemType TileItemType;
+typedef enum Orientation Orientation;
 typedef struct Position Position;
 typedef struct TileItem TileItem;
 typedef struct Tile Tile;
 typedef struct Map Map;
 typedef struct MapSlice MapSlice;
+typedef struct Position Position;
 
 #endif /* MAP_TYPEDEFS_H_ */

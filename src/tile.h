@@ -13,7 +13,6 @@
 #include "map_typedefs.h"
 #include "position.h"
 #include "tile_item.h"
-#include "tile.h"
 #include <SDL2/SDL.h>
 
 struct Tile {

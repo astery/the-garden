@@ -10,9 +10,6 @@
 
 #include <stdbool.h>
 #include "map_typedefs.h"
-#include "pawn.h"
-
-typedef struct Position Position;
 
 struct Position {
 	int x;

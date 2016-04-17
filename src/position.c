@@ -6,6 +6,7 @@
  */
 
 #include "position.h"
+#include "orientation.h"
 #include "map.h"
 
 Position Position_NextToOrientation(Position *pos, Orientation orient) {

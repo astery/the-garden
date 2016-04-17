@@ -28,7 +28,7 @@ void MapGS_HandleInput(Game *game, SDL_Event *e) {
 			break;
 		}
 		switch(e->key.keysym.sym) {
-		case SDLK_r:
+		case SDLK_f:
 			Game_SetCurrentState(game, GS_FPV);
 			return;
 		}
@@ -48,6 +48,7 @@ void MapGS_HandleInput(Game *game, SDL_Event *e) {
 			break;
 		default:
 			Game_MovePlayer(game, o);
+			game->player.orient = o;
 		}
 	}
 }
