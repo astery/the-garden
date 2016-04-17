@@ -94,7 +94,6 @@ bool Game_IfPlayerStepOnMonsterGoFight(Game *game, Orientation orient) {
    TileItem *item = Map_GetTopItemAt(game->current_map, pos.x, pos.y);
 
    if (item->type == MONSTER) {
-	   GameStateName prev_state = game->state->name;
 	   Game_SetCurrentState(game, GS_FIGHT);
 	   game->last_monster = item->pawn;
 
