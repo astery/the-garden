@@ -15,6 +15,7 @@
 #include "game_states/fpv.h"
 #include "game_states/fight.h"
 #include "game_states/stats.h"
+#include "game_states/merchant.h"
 
 GameState g_game_states[] = {
 		{GS_MENU, MenuGS_HandleInput, MenuGS_Render},
@@ -23,6 +24,7 @@ GameState g_game_states[] = {
 		{GS_FPV, FPVGS_HandleInput, FPVGS_Render},
 		{GS_FIGHT, FightGS_HandleInput, FightGS_Render},
 		{GS_STATS, StatsGS_HandleInput, StatsGS_Render},
+		{GS_MERCHANT, MerchantGS_HandleInput, MerchantGS_Render, MerchantGS_OnEnter, MerchantGS_OnLeave},
 };
 
 #endif /* GAME_STATES_H_ */

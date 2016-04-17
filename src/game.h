@@ -37,6 +37,7 @@ void Game_MovePlayer(Game *game, Orientation orient);
 void Game_ResetPlayer(Game *game);
 void Game_PawnHitPawn(Game *game, Pawn *att, Pawn *rec);
 bool Game_IsMonsterNearPlayer(Game *game);
+void Game_MoveToNextMap(Game *game);
 
 
 #endif /* GAME_H_ */

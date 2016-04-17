@@ -153,3 +153,12 @@ bool Game_IsMonsterNearPlayer(Game *game) {
 	}
 	return false;
 }
+
+void Game_MoveToNextMap(Game *game) {
+	int next_map_index = game->current_map_index + 1;
+	if (next_map_index >= GAME_MAPS_COUNT - 1) {
+		Game_Reset(game);
+	} else {
+		Game_SetCurrentMap(game, next_map_index);
+	}
+}
