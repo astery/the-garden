@@ -13,7 +13,20 @@
 #pragma GCC diagnostic ignored "-Wswitch"
 
 void FightGS_HandleInput(Game *game, SDL_Event *e) {
-
+   if (e->type == SDL_KEYDOWN) {
+	   switch(e->key.keysym.scancode) {
+	   case SDL_SCANCODE_DOWN:
+		   break;
+	   case SDL_SCANCODE_LEFT:
+		   break;
+	   case SDL_SCANCODE_RIGHT:
+		   break;
+	   case SDL_SCANCODE_UP:
+		   break;
+	   default:
+		   Game_SetCurrentState(game, game->prev_state);
+	   }
+   }
 }
 
 #pragma GCC diagnostic pop

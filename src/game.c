@@ -36,7 +36,7 @@ void Game_UpdatePlayerReference(Game *game) {
 			Tile *tile = &game->current_map->tiles[i][j];
 			TileItem *item = Tile_GetTopItem(tile);
 			if (item != NULL && item->type == PLAYER) {
-				Pawn_Init(&game->player, tile);
+				Pawn_Init(&game->player, tile, item);
 			}
 
 		}
@@ -54,6 +54,9 @@ void Game_SetCurrentMap(Game *game, int map_index) {
 }
 
 void Game_SetCurrentState(Game *game, GameStateName state_name) {
+	if (game->state != NULL) {
+		game->prev_state = game->state->name;
+	}
 	GameState *prev_state = game->state;
 	game->state = &g_game_states[state_name];
 	if (game->state->on_enter != NULL) {
@@ -86,6 +89,26 @@ void Game_MovePawn(Game *game, Pawn *pawn, Orientation orient) {
 	}
 }
 
+bool Game_IfPlayerStepOnMonsterGoFight(Game *game, Orientation orient) {
+   Position pos = Pawn_PeekMove(&game->player, orient);
+   TileItem *item = Map_GetTopItemAt(game->current_map, pos.x, pos.y);
+
+   if (item->type == MONSTER) {
+	   GameStateName prev_state = game->state->name;
+	   Game_SetCurrentState(game, GS_FIGHT);
+	   game->last_monster = item->pawn;
+
+	   return true;
+   }
+
+   return false;
+}
+
+
 void Game_MovePlayer(Game *game, Orientation orient) {
+	if (Game_IfPlayerStepOnMonsterGoFight(game, orient)) {
+		game->player.orient = orient;
+		return;
+	}
 	Game_MovePawn(game, &game->player, orient);
 }

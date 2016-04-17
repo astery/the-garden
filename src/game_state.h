@@ -9,7 +9,6 @@
 #define GAME_STATE_H_
 
 #include "game_typedefs.h"
-#include "game.h"
 
 enum GameStateName {
 	GS_MENU = 0,

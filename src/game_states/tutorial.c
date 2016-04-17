@@ -6,7 +6,9 @@
  */
 
 #include "tutorial.h"
+#include <stdlib.h>
 #include "../assets.h"
+#include "../game.h"
 
 void TutorialGS_OnEnter(Game *game, GameState *from_state) {
 	TutorialGSData *data = malloc(sizeof *data);

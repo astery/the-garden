@@ -9,9 +9,15 @@
 #include "position.h"
 #include "map.h"
 
-void Pawn_Init(Pawn *pawn, Tile *tile) {
+void Pawn_Init(Pawn *pawn, Tile *tile, TileItem *tile_item) {
 	pawn->tile = tile;
 	pawn->orient = PO_N;
+
+	if (tile_item == NULL) {
+		tile_item = Tile_GetTopItem(tile);
+	}
+
+	tile_item->pawn = pawn;
 }
 
 void Pawn_MoveTo(Pawn *pawn, Map *map, Position *pos) {

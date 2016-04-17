@@ -27,7 +27,7 @@ typedef struct {
 	int def;
 } Pawn;
 
-void Pawn_Init(Pawn *pawn, Tile *tile);
+void Pawn_Init(Pawn *pawn, Tile *tile, TileItem *item);
 void Pawn_MoveTo(Pawn *pawn, Map *map, Position *pos);
 void Pawn_MoveToTile(Pawn *pawn, Tile *tile);
 Position Pawn_PeekMove(Pawn *pawn, Orientation orient);

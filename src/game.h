@@ -20,6 +20,9 @@ struct Game {
 	int current_map_index;
 	Map *current_map;
 	Pawn player;
+
+	GameStateName prev_state;
+	Pawn *last_monster;
 };
 
 void Game_Init(Game *game);

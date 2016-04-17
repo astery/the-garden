@@ -10,6 +10,7 @@
 
 #include "map_typedefs.h"
 #include <SDL2/SDL.h>
+#include "pawn.h"
 
 enum TileItemType {
 	NONE = 0,
@@ -23,7 +24,7 @@ enum TileItemType {
 struct TileItem {
 	TileItemType type;
 	Tile *tile;
-	void *data;
+	Pawn *pawn;
 };
 
 
