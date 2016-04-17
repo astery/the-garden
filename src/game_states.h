@@ -17,6 +17,7 @@
 #include "game_states/stats.h"
 #include "game_states/merchant.h"
 #include "game_states/win.h"
+#include "game_states/gm.h"
 
 GameState g_game_states[] = {
 		{GS_MENU, MenuGS_HandleInput, MenuGS_Render},
@@ -27,6 +28,7 @@ GameState g_game_states[] = {
 		{GS_STATS, StatsGS_HandleInput, StatsGS_Render},
 		{GS_MERCHANT, MerchantGS_HandleInput, MerchantGS_Render, MerchantGS_OnEnter, MerchantGS_OnLeave},
 		{GS_WIN, WinGS_HandleInput, WinGS_Render},
+		{GS_GM, GMGS_HandleInput, GMGS_Render},
 };
 
 #endif /* GAME_STATES_H_ */

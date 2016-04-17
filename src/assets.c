@@ -179,7 +179,7 @@ int AssetsLoad(SDL_Renderer *render) {
 
 Pawn map1_pawns[] = {
 		{ .type = PT_PLAYER, .health = 3, .atk = 1, .def = 0 },
-		{ .type = PT_MONSTER, .health = 2, .atk = 1, .def = 0, .gold = 1 }
+		{ .type = PT_MONSTER, .health = 2, .atk = 10, .def = 0, .gold = 1 }
 };
 
 Pawn map2_pawns[] = {

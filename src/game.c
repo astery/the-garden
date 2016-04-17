@@ -110,6 +110,9 @@ bool Game_IfPlayerStepOnMonsterGoFight(Game *game, Orientation orient) {
 		Game_PawnHitPawn(game, p, m);
 		if (m->health > 0) {
 			Game_PawnHitPawn(game, m, p);
+			if (p->health <= 0) {
+				Game_SetCurrentState(game, GS_WIN);
+			}
 		}
 
 		return true;

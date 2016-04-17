@@ -19,6 +19,7 @@ enum GameStateName {
 	GS_STATS,
 	GS_MERCHANT,
 	GS_WIN,
+	GS_GM,
 	GS_ITEMS_SIZE
 };
 
