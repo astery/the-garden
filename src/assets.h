@@ -47,6 +47,10 @@ Image img_side_2_opened;
 Image img_side_3_opened;
 Image img_side_0_pixel;
 
+Image img_door_1;
+Image img_door_2;
+Image img_door_3;
+
 Animation anim_arrow_down;
 Animation anim_arrow_up;
 Animation anim_arrow_left;

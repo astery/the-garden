@@ -11,6 +11,8 @@
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wswitch"
 
+void FPVGS_RenderEnvironment(Game *game, SDL_Renderer *renderer);
+
 void FPVGS_HandleInput(Game *game, SDL_Event *e) {
 	Orientation player_o = game->player.orient;
 	Orientation move_o = -1;
@@ -57,6 +59,20 @@ void FPVGS_HandleInput(Game *game, SDL_Event *e) {
 }
 
 #pragma GCC diagnostic pop
+
+void FPVGS_Render(Game *game, SDL_Renderer *renderer) {
+	FPVGS_RenderEnvironment(game, renderer);
+
+	Pawn *p = &game->player;
+	TileItem *item;
+
+	item = Map_GetTopItemAtPos(game->current_map, Position_RelativeTo(&p->tile->pos, 0, 3, p->orient));
+	TileItem_RenderFPV(item, renderer, 3);
+	item = Map_GetTopItemAtPos(game->current_map, Position_RelativeTo(&p->tile->pos, 0, 2, p->orient));
+	TileItem_RenderFPV(item, renderer, 2);
+	item = Map_GetTopItemAtPos(game->current_map, Position_RelativeTo(&p->tile->pos, 0, 1, p->orient));
+	TileItem_RenderFPV(item, renderer, 1);
+}
 
 void FPVGS_RenderSideWall(Game *game, Position side_pos, int dist, Orientation orient, SDL_Renderer *renderer, SDL_RendererFlip flip) {
 	int i = dist;
@@ -111,12 +127,7 @@ void FPVGS_RenderSideWall(Game *game, Position side_pos, int dist, Orientation o
 	}
 }
 
-void FPVGS_Render(Game *game, SDL_Renderer *renderer) {
-	SDL_RenderCopyEx(renderer, img_fpv_bground.texture, NULL, NULL, 0, NULL, SDL_FLIP_NONE);
-	Position *player_pos = &game->player.tile->pos;
-
-	int dist = Map_GetFrontWallDistance(game->current_map, player_pos, game->player.orient);
-
+void FPVGS_RenderFrontWall(Game *game, SDL_Renderer *renderer, int dist) {
 	switch(dist) {
 	case 1:
 		SDL_RenderCopyEx(renderer, img_front_1.texture, NULL, NULL, 0, NULL, SDL_FLIP_NONE);
@@ -128,6 +139,16 @@ void FPVGS_Render(Game *game, SDL_Renderer *renderer) {
 		SDL_RenderCopyEx(renderer, img_front_3.texture, NULL, NULL, 0, NULL, SDL_FLIP_NONE);
 		break;
 	}
+}
+
+void FPVGS_RenderEnvironment(Game *game, SDL_Renderer *renderer) {
+	Position *player_pos = &game->player.tile->pos;
+
+	int dist = Map_GetFrontWallDistance(game->current_map, player_pos, game->player.orient);
+
+	SDL_RenderCopyEx(renderer, img_fpv_bground.texture, NULL, NULL, 0, NULL, SDL_FLIP_NONE);
+
+	FPVGS_RenderFrontWall(game, renderer, dist);
 	FPVGS_RenderSideWall(game, Position_RelativeTo(player_pos, -1, 0, game->player.orient), dist, game->player.orient, renderer, SDL_FLIP_NONE);
 	FPVGS_RenderSideWall(game, Position_RelativeTo(player_pos, 1, 0, game->player.orient), dist, game->player.orient, renderer, SDL_FLIP_HORIZONTAL);
 }

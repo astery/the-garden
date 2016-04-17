@@ -36,6 +36,9 @@ int AssetsLoad(SDL_Renderer *render) {
 	IMG_INIT(IMG_FPV_PATH, &img_side_3_opened, "side-3-opened.png");
 	IMG_INIT(IMG_FPV_PATH, &img_side_0_pixel, "side-0-pixel.png");
 
+	IMG_INIT(IMG_FPV_PATH, &img_door_1, "door-1.png");
+	IMG_INIT(IMG_FPV_PATH, &img_door_2, "door-2.png");
+	IMG_INIT(IMG_FPV_PATH, &img_door_3, "door-3.png");
 
 	anim_arrow_down = (Animation) {
 		.steps_count = 2,
@@ -103,8 +106,8 @@ void LoadMap1(Map *map) {
 	MapSlice m;
 	m = (MapSlice) {
 		.tiles[0] =
-			{ N, N, N, N, N, N, N },
-			{ N, W, W, W, W, W, N },
+			{ N, W, E, W, N, N, N },
+			{ N, W, N, W, W, W, N },
 			{ N, W, N, N, N, W, N },
 			{ N, W, N, W, N, W, N },
 			{ N, W, P, W, E, W, N },

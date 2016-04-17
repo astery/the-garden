@@ -29,6 +29,7 @@ struct TileItem {
 
 void TileItem_MoveItem(TileItem *item, Tile *from_tile, Tile *to_tile);
 void TileItem_Render(TileItem *item, SDL_Renderer *render);
+void TileItem_RenderFPV(TileItem *item, SDL_Renderer *render, int dist);
 
 
 #endif /* TILE_ITEM_H_ */
