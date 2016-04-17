@@ -74,6 +74,25 @@ Image img_knight_2_2;
 Image img_knight_3;
 Image img_knight_4;
 
+Image img_win_1;
+Image img_win_2;
+Image img_win_3;
+Image img_win_4;
+Image img_win_5;
+Image img_win_6;
+Image img_win_7;
+Image img_win_8;
+Image img_win_9;
+Image img_win_10;
+Image img_win_11;
+Image img_win_12;
+Image img_win_13;
+Image img_win_14;
+Image img_win_15;
+Image img_win_16;
+
+Animation anim_win;
+
 Animation anim_knight_idle;
 Animation anim_knight_2_idle;
 

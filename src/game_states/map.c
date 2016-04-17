@@ -45,7 +45,7 @@ void MapGS_HandleInput(Game *game, SDL_Event *e) {
 		case EXIT: ;
 			int next_map_index = game->current_map_index + 1;
 			if (next_map_index >= GAME_MAPS_COUNT - 1) {
-				Game_Reset(game);
+				Game_SetCurrentState(game, GS_WIN);
 			} else {
 				Game_SetCurrentMap(game, next_map_index);
 			}
