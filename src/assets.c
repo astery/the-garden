@@ -57,6 +57,7 @@ int AssetsLoad(SDL_Renderer *render) {
 	IMG_INIT(IMG_FPV_PATH, &img_knight_3_down, "bknight-3-down.png");
 	IMG_INIT(IMG_FPV_PATH, &img_knight_1_defend, "bknight-1-defend.png");
 	IMG_INIT(IMG_FPV_PATH, &img_knight_2, "bknight-2.png");
+	IMG_INIT(IMG_FPV_PATH, &img_knight_2_2, "bknight-2-2.png");
 	IMG_INIT(IMG_FPV_PATH, &img_knight_3, "bknight-3.png");
 	IMG_INIT(IMG_FPV_PATH, &img_knight_4, "bknight-4.png");
 
@@ -65,6 +66,16 @@ int AssetsLoad(SDL_Renderer *render) {
 		.steps = {
 			&img_knight_1_idle,
 			&img_knight_1_idle_2
+		},
+		.width = 7,
+		.height = 7
+	};
+
+	anim_knight_2_idle = (Animation) {
+		.steps_count = 2,
+		.steps = {
+			&img_knight_2,
+			&img_knight_2_2
 		},
 		.width = 7,
 		.height = 7
@@ -123,7 +134,8 @@ int AssetsLoad(SDL_Renderer *render) {
 #define E EXIT
 
 Pawn map1_pawns[] = {
-		{ .type = PT_PLAYER, .health = 1, .atk = 1, .def = 0 }
+		{ .type = PT_PLAYER, .health = 1, .atk = 1, .def = 0 },
+		{ .type = PT_MONSTER, .health = 1, .atk = 1, .def = 0 }
 };
 
 Pawn map2_pawns[] = {
@@ -136,7 +148,7 @@ void LoadMap1(Map *map) {
 	MapSlice m;
 	m = (MapSlice) {
 		.tiles[0] =
-			{ N, W, E, W, N, N, N },
+			{ N, W, M, W, N, N, N },
 			{ N, W, N, W, W, W, N },
 			{ N, W, N, N, N, W, N },
 			{ N, W, N, W, N, W, N },
@@ -146,6 +158,7 @@ void LoadMap1(Map *map) {
 	};
 	Map_AppendFromItemTypeArray(map, m);
 	Pawn_Init(&map1_pawns[0], &map->tiles[2][4], NULL);
+	Pawn_Init(&map1_pawns[1], &map->tiles[2][0], NULL);
 }
 
 void LoadMap2(Map *map) {

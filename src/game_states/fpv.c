@@ -68,7 +68,8 @@ void FPVGS_Render(Game *game, SDL_Renderer *renderer) {
 
 	int i;
 	for (i=4; i >= 1; i--) {
-		item = Map_GetTopItemAtPos(game->current_map, Position_RelativeTo(&p->tile->pos, 0, i, p->orient));
+		Position pos = Position_RelativeTo(&p->tile->pos, 0, i, p->orient);
+		item = Map_GetTopItemAtPos(game->current_map, pos);
 		TileItem_RenderFPV(item, renderer, i);
 	}
 }

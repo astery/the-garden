@@ -67,10 +67,12 @@ Image img_knight_2_down;
 Image img_knight_3_down;
 Image img_knight_1_defend;
 Image img_knight_2;
+Image img_knight_2_2;
 Image img_knight_3;
 Image img_knight_4;
 
 Animation anim_knight_idle;
+Animation anim_knight_2_idle;
 
 Animation anim_arrow_down;
 Animation anim_arrow_up;

@@ -68,7 +68,7 @@ void TileItem_RenderFPV(TileItem *item, SDL_Renderer *renderer, int dist) {
 				SDL_RenderCopy(renderer, img_knight_3.texture, NULL, NULL);
 				break;
 			case 2:
-				SDL_RenderCopy(renderer, img_knight_2.texture, NULL, NULL);
+				Animation_Render(&anim_knight_2_idle, renderer, 0, 0);
 				break;
 			case 1:
 				Animation_Render(&anim_knight_idle, renderer, 0, 0);
