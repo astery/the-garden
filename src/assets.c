@@ -20,6 +20,9 @@ int AssetsLoad(SDL_Renderer *render) {
 	IMG_INIT(IMG_FPV_PATH, &img_stat_at, "stat-at.png");
 	IMG_INIT(IMG_FPV_PATH, &img_stat_gd, "stat-gd.png");
 
+	IMG_INIT(IMG_FPV_PATH, &img_tutor_a, "tutor-a.png");
+	IMG_INIT(IMG_FPV_PATH, &img_tutor_d, "tutor-d.png");
+
 	IMG_INIT(IMG_SCREENS_PATH, &img_menu, "start_screen.png");
 	IMG_INIT(IMG_SCREENS_PATH, &img_arrow_down_1, "arrow_down_1.png");
 	IMG_INIT(IMG_SCREENS_PATH, &img_arrow_down_2, "arrow_down_2.png");

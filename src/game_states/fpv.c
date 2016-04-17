@@ -35,8 +35,11 @@ void FPVGS_HandleInput(Game *game, SDL_Event *e) {
 			break;
 		}
 		switch(e->key.keysym.sym) {
-		case SDLK_f:
+		case SDLK_d:
 			Game_SetCurrentState(game, GS_MAP);
+			return;
+		case SDLK_a:
+			Game_SetCurrentState(game, GS_STATS);
 			return;
 		}
 	}

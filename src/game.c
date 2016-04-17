@@ -29,6 +29,7 @@ void Game_ResetPlayer(Game *game) {
 	game->player.health = 3;
 	game->player.atk = 1;
 	game->player.def = 0;
+	game->player.gold = 1;
 }
 
 void Game_UpdatePlayerReference(Game *game) {

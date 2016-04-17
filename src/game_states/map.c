@@ -29,8 +29,11 @@ void MapGS_HandleInput(Game *game, SDL_Event *e) {
 			break;
 		}
 		switch(e->key.keysym.sym) {
-		case SDLK_f:
+		case SDLK_d:
 			Game_SetCurrentState(game, GS_FPV);
+			return;
+		case SDLK_a:
+			Game_SetCurrentState(game, GS_STATS);
 			return;
 		}
 	}
