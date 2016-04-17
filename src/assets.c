@@ -64,6 +64,47 @@ int AssetsLoad(SDL_Renderer *render) {
 	IMG_INIT(IMG_FPV_PATH, &img_knight_3, "bknight-3.png");
 	IMG_INIT(IMG_FPV_PATH, &img_knight_4, "bknight-4.png");
 
+	IMG_INIT(IMG_FPV_PATH, &img_win_1, "win-1.png");
+	IMG_INIT(IMG_FPV_PATH, &img_win_2, "win-2.png");
+	IMG_INIT(IMG_FPV_PATH, &img_win_3, "win-3.png");
+	IMG_INIT(IMG_FPV_PATH, &img_win_4, "win-4.png");
+	IMG_INIT(IMG_FPV_PATH, &img_win_5, "win-5.png");
+	IMG_INIT(IMG_FPV_PATH, &img_win_6, "win-6.png");
+	IMG_INIT(IMG_FPV_PATH, &img_win_7, "win-7.png");
+	IMG_INIT(IMG_FPV_PATH, &img_win_8, "win-8.png");
+	IMG_INIT(IMG_FPV_PATH, &img_win_9, "win-9.png");
+	IMG_INIT(IMG_FPV_PATH, &img_win_10, "win-10.png");
+	IMG_INIT(IMG_FPV_PATH, &img_win_11, "win-11.png");
+	IMG_INIT(IMG_FPV_PATH, &img_win_12, "win-12.png");
+	IMG_INIT(IMG_FPV_PATH, &img_win_13, "win-13.png");
+	IMG_INIT(IMG_FPV_PATH, &img_win_14, "win-14.png");
+	IMG_INIT(IMG_FPV_PATH, &img_win_15, "win-15.png");
+	IMG_INIT(IMG_FPV_PATH, &img_win_16, "win-16.png");
+
+	anim_win = (Animation) {
+		.steps_count = 16,
+		.steps = {
+			&img_win_1,
+			&img_win_2,
+			&img_win_3,
+			&img_win_4,
+			&img_win_5,
+			&img_win_6,
+			&img_win_7,
+			&img_win_8,
+			&img_win_9,
+			&img_win_10,
+			&img_win_11,
+			&img_win_12,
+			&img_win_13,
+			&img_win_14,
+			&img_win_15,
+			&img_win_16,
+		},
+		.width = 7,
+		.height = 7
+	};
+
 	anim_knight_idle = (Animation) {
 		.steps_count = 2,
 		.steps = {

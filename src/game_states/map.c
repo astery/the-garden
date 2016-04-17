@@ -43,7 +43,7 @@ void MapGS_HandleInput(Game *game, SDL_Event *e) {
 		TileItem *item = Map_GetTopItemAt(game->current_map, pos.x, pos.y);
 		switch (item->type) {
 		case EXIT: ;
-			Game_SetCurrentState(game, GS_MERCHANT);
+			Game_StepInDoor(game);
 			break;
 		default:
 			Game_MovePlayer(game, o);

@@ -51,12 +51,7 @@ void FPVGS_HandleInput(Game *game, SDL_Event *e) {
 		TileItem *item = Map_GetTopItemAt(game->current_map, pos.x, pos.y);
 		switch (item->type) {
 		case EXIT: ;
-			int next_map_index = game->current_map_index + 1;
-			if (next_map_index >= GAME_MAPS_COUNT - 1) {
-				Game_Reset(game);
-			} else {
-				Game_SetCurrentMap(game, next_map_index);
-			}
+			Game_StepInDoor(game);
 			break;
 		default:
 			Game_MovePlayer(game, move_o);

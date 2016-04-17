@@ -62,8 +62,7 @@ void MerchantGS_HandleInput(Game *game, SDL_Event *e) {
 			}
 			break;
 		default:
-				Game_MoveToNextMap(game);
-				Game_SetCurrentState(game, GS_MAP);
+			Game_MoveToNextMap(game);
 			break;
 		}
 	}
