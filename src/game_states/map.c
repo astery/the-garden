@@ -40,7 +40,7 @@ void MapGS_HandleInput(Game *game, SDL_Event *e) {
 
 	if (o != -1) {
 		Position pos = Pawn_PeekMove(&game->player, o);
-		TileItem *item = Map_GetTopItemAt(game->current_map, pos.x, pos.y);
+		TileItem *item = Map_GetTopItemAtPos(game->current_map, pos);
 		switch (item->type) {
 		case EXIT: ;
 			Game_StepInDoor(game);

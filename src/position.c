@@ -39,5 +39,8 @@ Position Position_RelativeTo(Position *pos, int x, int y, Orientation orient) {
 }
 
 bool Position_IsInMapBoundaries(Position *pos, Map *map) {
-	return pos->x <= MAP_SIZE && pos->y <= MAP_SIZE;
+	return pos->x < MAP_SIZE
+			&& pos->x >= 0
+			&& pos->y < MAP_SIZE
+			&& pos->y >= 0;
 }

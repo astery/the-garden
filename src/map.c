@@ -25,6 +25,8 @@ void Map_Init(Map *map) {
 			tile->default_item.type = NONE;
 		}
 	}
+
+	map->border.type = WALL;
 }
 
 void Map_AppendFromItemTypeArray(Map *map, MapSlice slice) {
@@ -58,18 +60,18 @@ void Map_Render(Map *map, SDL_Renderer *renderer) {
 	return;
 }
 
-TileItem* Map_GetTopItemAt(Map *map, int x, int y) {
-	Tile *tile = &map->tiles[x][y];
-	return Tile_GetTopItem(tile);
-}
-
 TileItem* Map_GetTopItemAtPos(Map *map, Position pos) {
-	return Map_GetTopItemAt(map, pos.x, pos.y);
+	if (!Position_IsInMapBoundaries(&pos, map)) {
+		return &map->border;
+	}
+
+	Tile *tile = &map->tiles[pos.x][pos.y];
+	return Tile_GetTopItem(tile);
 }
 
 bool Map_IsWallAtPos(Map *map, Position pos) {
 	if (!Position_IsInMapBoundaries(&pos, map)) {
-		return 0;
+		return true;
 	}
 	TileItem *item = Map_GetTopItemAtPos(map, pos);
 	return item->type == WALL;
