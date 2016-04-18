@@ -24,7 +24,7 @@ int Application_Init(
 
 	app->window = SDL_CreateWindow("The garden", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, screen_width, screen_height, SDL_WINDOW_SHOWN);
 	if (app->window == NULL){
-		printf("SDL_CreateWindow Error: %s", SDL_GetError());
+		printf("SDL_CreateWindow Error: %s\n", SDL_GetError());
 		SDL_Quit();
 		return 1;
 	}
