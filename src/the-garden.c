@@ -33,7 +33,7 @@ int main(int argc, char* argv[])
 	Game game;
 	Game_Init(&game);
 
-//	SND_PlayBackground();
+	SND_PlayBackground();
 
 	Application_RunLoop(&app, &game);
 	Application_Destroy(&app);
