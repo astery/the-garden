@@ -182,45 +182,45 @@ int AssetsLoad(SDL_Renderer *render) {
 
 Pawn map1_pawns[] = {
 		{ .type = PT_PLAYER, .health = 3, .atk = 1, .def = 0 },
-		{ .type = PT_MONSTER, .health = 2, .atk = 10, .def = 0, .gold = 1 }
+		{ .type = PT_MONSTER, .health = 2, .atk = 10, .def = 0, .gold = 2 }
 };
 
 Pawn map2_pawns[] = {
 		{ .type = PT_PLAYER, .health = 3, .atk = 1, .def = 0 },
 		{ .type = PT_MONSTER, .health = 2, .atk = 1, .def = 0, .gold = 1 },
-		{ .type = PT_MONSTER, .health = 2, .atk = 1, .def = 0, .gold = 1 },
+		{ .type = PT_MONSTER, .health = 1, .atk = 1, .def = 2, .gold = 1 },
 		{ .type = PT_MONSTER, .health = 2, .atk = 1, .def = 0, .gold = 1 }
 };
 
 Pawn map3_pawns[] = {
 		{ .type = PT_PLAYER, .health = 3, .atk = 1, .def = 0 },
-		{ .type = PT_MONSTER, .health = 2, .atk = 1, .def = 0, .gold = 1 },
-		{ .type = PT_MONSTER, .health = 2, .atk = 1, .def = 0, .gold = 1 },
-		{ .type = PT_MONSTER, .health = 2, .atk = 1, .def = 0, .gold = 1 },
-		{ .type = PT_MONSTER, .health = 2, .atk = 1, .def = 0, .gold = 1 }
+		{ .type = PT_MONSTER, .health = 2, .atk = 1, .def = 0, .gold = 2 },
+		{ .type = PT_MONSTER, .health = 2, .atk = 2, .def = 0, .gold = 1 },
+		{ .type = PT_MONSTER, .health = 2, .atk = 1, .def = 0, .gold = 2 },
+		{ .type = PT_MONSTER, .health = 3, .atk = 1, .def = 0, .gold = 1 }
 };
 
 Pawn map4_pawns[] = {
 		{ .type = PT_PLAYER, .health = 3, .atk = 1, .def = 0 },
 		{ .type = PT_MONSTER, .health = 2, .atk = 1, .def = 0, .gold = 1 },
+		{ .type = PT_MONSTER, .health = 4, .atk = 2, .def = 1, .gold = 1 },
 		{ .type = PT_MONSTER, .health = 2, .atk = 1, .def = 0, .gold = 1 },
+		{ .type = PT_MONSTER, .health = 3, .atk = 2, .def = 1, .gold = 2 },
 		{ .type = PT_MONSTER, .health = 2, .atk = 1, .def = 0, .gold = 1 },
-		{ .type = PT_MONSTER, .health = 2, .atk = 1, .def = 0, .gold = 1 },
-		{ .type = PT_MONSTER, .health = 2, .atk = 1, .def = 0, .gold = 1 },
-		{ .type = PT_MONSTER, .health = 2, .atk = 1, .def = 0, .gold = 1 },
-		{ .type = PT_MONSTER, .health = 2, .atk = 1, .def = 0, .gold = 1 },
-		{ .type = PT_MONSTER, .health = 2, .atk = 1, .def = 0, .gold = 1 },
-		{ .type = PT_MONSTER, .health = 2, .atk = 1, .def = 0, .gold = 1 },
-		{ .type = PT_MONSTER, .health = 2, .atk = 1, .def = 0, .gold = 1 }
+		{ .type = PT_MONSTER, .health = 6, .atk = 1, .def = 2, .gold = 3 },
+		{ .type = PT_MONSTER, .health = 3, .atk = 2, .def = 2, .gold = 1 },
+		{ .type = PT_MONSTER, .health = 4, .atk = 1, .def = 0, .gold = 2 },
+		{ .type = PT_MONSTER, .health = 1, .atk = 1, .def = 3, .gold = 1 },
+		{ .type = PT_MONSTER, .health = 1, .atk = 4, .def = 0, .gold = 3 }
 };
 
 Pawn map5_pawns[] = {
 		{ .type = PT_PLAYER, .health = 3, .atk = 1, .def = 0 },
 		{ .type = PT_MONSTER, .health = 2, .atk = 1, .def = 0, .gold = 1 },
-		{ .type = PT_MONSTER, .health = 2, .atk = 1, .def = 0, .gold = 1 },
-		{ .type = PT_MONSTER, .health = 2, .atk = 1, .def = 0, .gold = 1 },
-		{ .type = PT_MONSTER, .health = 2, .atk = 1, .def = 0, .gold = 1 },
-		{ .type = PT_MONSTER, .health = 2, .atk = 1, .def = 0, .gold = 1 }
+		{ .type = PT_MONSTER, .health = 3, .atk = 2, .def = 1, .gold = 1 },
+		{ .type = PT_MONSTER, .health = 4, .atk = 3, .def = 2, .gold = 1 },
+		{ .type = PT_MONSTER, .health = 5, .atk = 4, .def = 3, .gold = 1 },
+		{ .type = PT_MONSTER, .health = 6, .atk = 5, .def = 4, .gold = 1 }
 };
 
 void LoadMap1(Map *map) {

@@ -22,7 +22,8 @@ void StatsGS_OnLeave(Game *game, GameState *from_state) {
 
 void StatsGS_HandleInput(Game *game, SDL_Event *e) {
    if (e->type == SDL_KEYDOWN) {
-		Game_SetCurrentState(game, GS_FPV);
+//		Game_SetCurrentState(game, GS_FPV);
+		Game_SetCurrentState(game, game->prev_state);
    }
 }
 
