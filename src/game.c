@@ -145,7 +145,10 @@ void Game_PawnHitPawn(Game *game, Pawn *att, Pawn *rec) {
 
 	if (health <= 0) {
 		game->defeat_enemy_on_this_step = true;
-		att->gold += rec->gold;
+		int a = att->gold;
+		int b = rec->gold;
+		int r = a + b;
+		att->gold = r;
 		rec->gold = 0;
 	}
 }
