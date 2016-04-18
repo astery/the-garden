@@ -47,7 +47,7 @@ void Game_UpdatePlayerReference(Game *game) {
 	}
 
 	if (game->player.tile == NULL) {
-		printf("Game: current map has no player");
+		printf("Game: current map has no player\n");
 	}
 }
 
@@ -149,6 +149,7 @@ void Game_PawnHitPawn(Game *game, Pawn *att, Pawn *rec) {
 		int b = rec->gold;
 		int r = a + b;
 		att->gold = r;
+		// printf("a: %d, b: %d\n", att->gold, rec->gold);
 		rec->gold = 0;
 	}
 }
