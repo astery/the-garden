@@ -98,6 +98,8 @@ Image img_win_14;
 Image img_win_15;
 Image img_win_16;
 
+Image img_game_over;
+
 Animation anim_win;
 
 Animation anim_knight_idle;

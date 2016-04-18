@@ -23,9 +23,9 @@ typedef struct {
 	Tile *tile;
 	Orientation orient;
 	int health;
-	int gold;
 	int atk;
 	int def;
+	int gold;
 } Pawn;
 
 void Pawn_Init(Pawn *pawn, Tile *tile, TileItem *item);

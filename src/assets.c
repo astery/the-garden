@@ -81,6 +81,8 @@ int AssetsLoad(SDL_Renderer *render) {
 	IMG_INIT(IMG_FPV_PATH, &img_win_15, "win-15.png");
 	IMG_INIT(IMG_FPV_PATH, &img_win_16, "win-16.png");
 
+	IMG_INIT(IMG_FPV_PATH, &img_game_over, "gameover.png");
+
 	anim_win = (Animation) {
 		.steps_count = 16,
 		.steps = {
