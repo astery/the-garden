@@ -8,12 +8,13 @@
 #include "stats.h"
 #include "../application.h"
 #include "../colors.h"
+#include "../sounds.h"
 
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wswitch"
 
 void WinGS_OnEnter(Game *game, GameState *from_state) {
-
+	SND_PlayVictory();
 }
 
 void WinGS_OnLeave(Game *game, GameState *from_state) {

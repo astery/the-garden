@@ -16,6 +16,11 @@ void SND_PlayBackground() {
 	Mix_PlayMusic(music, -1);
 }
 
+void SND_PlayVictory() {
+	Mix_Music *music = Mix_LoadMUS(SND_VICTORY);
+	Mix_PlayMusic(music, -1);
+}
+
 void SND_PlayFootsteps() {
 	Mix_Chunk *sample = Mix_LoadWAV(SND_FOOTSTEPS);
 	Mix_PlayChannel(1, sample, 0);
