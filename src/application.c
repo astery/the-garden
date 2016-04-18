@@ -53,6 +53,7 @@ int Application_Init(
 	}
 
 	Mix_OpenAudio(22050, AUDIO_S16SYS, 2, 640);
+	Mix_AllocateChannels(4);
 
 	return 0;
 }

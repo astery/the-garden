@@ -16,17 +16,22 @@ void SND_PlayBackground() {
 	Mix_PlayMusic(music, -1);
 }
 
+void SND_PlayVictory() {
+	Mix_Music *music = Mix_LoadMUS(SND_VICTORY);
+	Mix_PlayMusic(music, -1);
+}
+
 void SND_PlayFootsteps() {
-	Mix_Music *music = Mix_LoadMUS(SND_FOOTSTEPS);
-	Mix_PlayMusic(music, 0);
+	Mix_Chunk *sample = Mix_LoadWAV(SND_FOOTSTEPS);
+	Mix_PlayChannel(1, sample, 0);
 }
 
 void SND_PlayOpenDoor() {
-	Mix_Music *music = Mix_LoadMUS(SND_OPEN_DOOR);
-	Mix_PlayMusic(music, 0);
+	Mix_Chunk *sample = Mix_LoadWAV(SND_OPEN_DOOR);
+	Mix_PlayChannel(1, sample, 0);
 }
 
 void SND_PlayAttack() {
-	Mix_Music *music = Mix_LoadMUS(SND_ATTACK);
-	Mix_PlayMusic(music, 0);
+	Mix_Chunk *sample = Mix_LoadWAV(SND_ATTACK);
+	Mix_PlayChannel(1, sample, 0);
 }

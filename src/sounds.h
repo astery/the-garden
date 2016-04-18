@@ -9,6 +9,7 @@
 #define SOUNDS_H_
 
 void SND_PlayBackground();
+void SND_PlayVictory();
 void SND_PlayFootsteps();
 void SND_PlayOpenDoor();
 void SND_PlayAttack();

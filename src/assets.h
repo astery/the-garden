@@ -23,10 +23,11 @@
 #define IMG_FPV_PATH "." SEP "assets" SEP "first_person_screens_assets" SEP
 
 #define SND_PATH "." SEP "assets" SEP "sounds" SEP
+#define SND_VICTORY SND_PATH "victory.mp3"
 #define SND_BACKGROUND SND_PATH "day_43_mono.mp3"
-#define SND_FOOTSTEPS SND_PATH "footsteps.mp3"
-#define SND_OPEN_DOOR SND_PATH "door.mp3"
-#define SND_ATTACK SND_PATH "attack.mp3"
+#define SND_FOOTSTEPS SND_PATH "footsteps.ogg"
+#define SND_OPEN_DOOR SND_PATH "door.ogg"
+#define SND_ATTACK SND_PATH "attack.ogg"
 
 Image img_menu;
 Image img_map;
