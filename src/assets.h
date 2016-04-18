@@ -24,9 +24,9 @@
 
 #define SND_PATH "." SEP "assets" SEP "sounds" SEP
 #define SND_BACKGROUND SND_PATH "day_43_mono.mp3"
-#define SND_FOOTSTEPS SND_PATH "footsteps.mp3"
-#define SND_OPEN_DOOR SND_PATH "door.mp3"
-#define SND_ATTACK SND_PATH "attack.mp3"
+#define SND_FOOTSTEPS SND_PATH "footsteps.ogg"
+#define SND_OPEN_DOOR SND_PATH "door.ogg"
+#define SND_ATTACK SND_PATH "attack.ogg"
 
 Image img_menu;
 Image img_map;
