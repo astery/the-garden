@@ -27,8 +27,8 @@ GameState g_game_states[] = {
 		{GS_FIGHT, FightGS_HandleInput, FightGS_Render},
 		{GS_STATS, StatsGS_HandleInput, StatsGS_Render},
 		{GS_MERCHANT, MerchantGS_HandleInput, MerchantGS_Render, MerchantGS_OnEnter, MerchantGS_OnLeave},
-		{GS_WIN, WinGS_HandleInput, WinGS_Render},
-		{GS_GM, GMGS_HandleInput, GMGS_Render},
+		{GS_WIN, WinGS_HandleInput, WinGS_Render, WinGS_OnEnter, WinGS_OnLeave},
+		{GS_GM, GMGS_HandleInput, GMGS_Render, GMGS_OnEnter, GMGS_OnLeave},
 };
 
 #endif /* GAME_STATES_H_ */

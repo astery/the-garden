@@ -36,7 +36,7 @@ void GMGS_HandleInput(Game *game, SDL_Event *e) {
 }
 
 void GMGS_RenderGM(SDL_Renderer *renderer) {
-	Animation_Render(&anim_win, renderer, 0, 0);
+	SDL_RenderCopy(renderer, img_game_over.texture, NULL, NULL);
 }
 
 #pragma GCC diagnostic pop
